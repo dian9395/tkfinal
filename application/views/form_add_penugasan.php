@@ -1,24 +1,29 @@
 <html>
 <head>
-    <title>Halaman Admin - Daftar Penugasan</title>
+    <title>Halaman Admin - Daftar Peminjaman</title>
     <link rel="stylesheet" href="<?php echo base_url('assets/css/reset.css')?>" type="text/css" media="screen">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css')?>" type="text/css" media="screen">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/grid.css')?>" type="text/css" media="screen">
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/dropdown.css')?>" type="text/css" media="screen">
-	<link rel="stylesheet" href="<?php echo base_url('assets/DataTables-1.10.18/css/dataTables.bootstrap.css')?>" type="text/css" media="screen"> 
-    <link rel="stylesheet" href="<?php echo base_url('assets/DataTables-1.10.18/css/jquery.dataTables.css ')?>" type="text/css" media="screen"> 
-    <link type="text/css" href="<?php echo base_url('assets/jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet"/>   	
-	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-2.1.1.min.js')?>"></script>  
-	<script type="text/javascript" src="<?php echo base_url('assets/jquery-ui-1.11.2/jquery-ui.js')?>"></script>  
-	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.ui.datepicker-id.js')?>" ></script> 
-	<script type="text/javascript" src="<?php echo base_url('assets/DataTables-1.10.18/js/jquery.dataTables.min.js')?>" ></script>  
-	<script type="text/javascript" src="<?php echo base_url('assets/DataTables-1.10.18/js/dataTables.bootstrap.js')?>" ></script>
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/dropdown.css')?>" type="text/css" media="screen"> 
+    <link type="text/css" href="<?php echo base_url('assets/jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet"/>  	
+	<script type="text/javascript" href="<?php echo base_url('assets/js/jquery-2.1.1.min.js')?>"</script>  
+	<script type="text/javascript" href="<?php echo base_url('assets/jquery-ui-1.11.2/jquery-ui.js')?>"</script>  
+	<script type="text/javascript" href="<?php echo base_url('assets/js/jquery.ui.datepicker-id.js')?>"</script>  
+<script type="text/javascript"> 
+$("document").ready(function(){ 
+$("#tanggal").datepicker();
+
+}); 
+</script> 
 </head>
        
 
-<body>
+<body id="page5">
 	<header class="header">
-	<div class="menu-kelompok1">
+
+	
+		<div class="menu-kelompok1">
+ 
 		<ul>
 			<li class="dropdown"><a href="#">Acara</a>
 			<ul class="isi-dropdown">
@@ -69,36 +74,36 @@
                                         <div class="wrapper">
                                             <div class="grid_12">
                                             	<div class="indent-left">
-                                                	<h3 class="p2">Halaman Admin - Daftar Penugasan</h3>
-                                                	<?php echo "<h2>".$this->session->flashdata('pesan')."</h2>"?>
-													<table id="myTable">
-													<thead>
-														<tr style="background:grey;">
-															<th>Petugas</th>
-															<th>Tanggal Mulai</th>
-															<th>Tanggal Selesai</th>
-															<th>Stasiun</th>
-															<th>Action</th>
-														</tr>
-													</thead>
-														<tbody>
-														<?php
-															foreach ($data as $col){?>
-														<tr>
-															<td><?php echo $col['ktp'];?></td>
-															<td><?php echo $col['start_datetime'];?></td>
-															<td><?php echo $col['end_datetime'];?></td>
-															<td><?php echo $col['id_stasiun'];?></td>	
-															<td align="center">
-																<a href="#">Update</a> ||
-																<a href="#">Delete</a>
-															</td>				
-														</tr>
-														<?php }	?>
-														</tbody>
-													</table> 
+                                                	<h3 class="p2">Form Penambahan Penugasan</h3>
 
-<!--                                                 </div>
+
+	<form method="POST" action="<?php echo base_url()."/daftar_penugasan_admin/do_insert_penugasan"; ?>">
+	<table>
+		<tr>
+			<td>Petugas</td>
+			<td><input type="text" name="ktp" /></td>
+		</tr>
+		<tr>
+			<td>Tanggal Mulai</td>
+			<td><input id="tanggal" type="text" size="50" maxlength="50" name="isitgl"/></td>
+		</tr>
+		<tr>
+			<td>Tanggal Selesai</td>
+			<td><input type="text" name="end_datetime" /></td>
+		</tr>
+		<tr>
+			<td>Stasiun</td>
+			<td><input type="text" name="id_stasiun" /></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td cols="3"><input type="submit" name="btnSubmit" value="SUBMIT" /></td>
+		</tr>
+	</table>
+	</form>
+
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -109,8 +114,7 @@
 			</div>	
         </div>
  
-    </section> -->
-
+    </section>
     <footer>
         <div class="main">
         	<div class="container_12">
@@ -122,9 +126,5 @@
             </div>
         </div>
     </footer>
-	<script type="text/javascript">
-	$(document).ready(function(){
-        $('#myTable').DataTable();
-    }); </script>
 </body>
 </html>

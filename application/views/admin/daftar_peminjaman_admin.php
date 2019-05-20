@@ -34,8 +34,8 @@ $("#tanggal").datepicker();
 				</ul></li>
 			<li class="dropdown"><a href="#">Petugas</a>
 			<ul class="isi-dropdown">
-					<li><a href="#">Tambah Penugasan</a></li>
-					<li><a href="#">Daftar Penugasan</a></li>
+					<li><a href="<?php echo base_url()."dbs/add_data_penugasan";?>">Tambah Penugasan</a></li>
+					<li><a href="<?php echo base_url()."dbs/daftar_penugasan_admin";?>">Daftar Penugasan</a></li>
 				</ul></li>
 			<li class="dropdown"><a href="#">Stasiun</a>
 				<ul class="isi-dropdown">
@@ -60,8 +60,6 @@ $("#tanggal").datepicker();
 			<li><a href="#">Logout</a></li>
 			
 		</ul>
- 
-	
  
 	</div>
 </header>
