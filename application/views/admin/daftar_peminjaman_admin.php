@@ -23,8 +23,8 @@
 		<ul>
 			<li class="dropdown"><a href="#">Acara</a>
 			<ul class="isi-dropdown">
-					<li><a href="#">Tambah Acara</a></li>
-					<li><a href="#">Daftar Acara</a></li>
+					<li><a href="<?php echo base_url()."dbs/add_data_acara";?>">Tambah Acara</a></li>
+					<li><a href="<?php echo base_url()."dbs/daftar_acara_admin";?>">Daftar Acara</a></li>
 				</ul></li>
 			<li class="dropdown"><a href="#">Petugas</a>
 			<ul class="isi-dropdown">
@@ -49,7 +49,7 @@
 					<li><a href="#">Daftar Voucher</a></li>
 				</ul>
 			</li>
-			<li><a href="#">Daftar Peminjaman</a></li>
+			<li><a href="<?php echo base_url()."dbs/daftar_peminjaman_admin";?>">Daftar Peminjaman</a></li>
 			<li><a href="<?php echo base_url()."dbs/daftar_laporan_admin";?>">Daftar Laporan</a></li>
 			<li><a href="<?php echo base_url()."index.php";?>">Logout</a></li>
 			
@@ -74,7 +74,7 @@
 													
 													<?php echo "<h2>".$this->session->flashdata('pesan')."</h2>"?>
 													<table id="tabel_peminjaman" class="display" cellspacing="0" width="100%">
-														<thead>
+														<thead><th>
 															<tr style="background:grey;">
 															<th>Nomor Kartu Anggota </th>
 															<th>Sepeda </th>

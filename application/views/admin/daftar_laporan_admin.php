@@ -20,13 +20,13 @@
 		<ul>
 			<li class="dropdown"><a href="#">Acara</a>
 			<ul class="isi-dropdown">
-					<li><a href="#">Tambah Acara</a></li>
-					<li><a href="#">Daftar Acara</a></li>
+					<li><a href="<?php echo base_url()."dbs/add_data_acara";?>">Tambah Acara</a></li>
+					<li><a href="<?php echo base_url()."dbs/daftar_acara_admin";?>">Daftar Acara</a></li>
 				</ul></li>
 			<li class="dropdown"><a href="#">Petugas</a>
 			<ul class="isi-dropdown">
-					<li><a href="#">Tambah Penugasan</a></li>
-					<li><a href="#">Daftar Penugasan</a></li>
+					<li><a href="<?php echo base_url()."dbs/add_data_penugasan";?>">Tambah Penugasan</a></li>
+					<li><a href="<?php echo base_url()."dbs/daftar_penugasan_admin";?>">Daftar Penugasan</a></li>
 				</ul></li>
 			<li class="dropdown"><a href="#">Stasiun</a>
 				<ul class="isi-dropdown">
@@ -46,8 +46,8 @@
 					<li><a href="#">Daftar Voucher</a></li>
 				</ul>
 			</li>
-			<li><a href="#">Daftar Peminjaman</a></li>
-			<li><a href="#">Daftar Laporan</a></li>
+			<li><a href="<?php echo base_url()."dbs/daftar_peminjaman_admin";?>">Daftar Peminjaman</a></li>
+			<li><a href="<?php echo base_url()."dbs/daftar_laporan_admin";?>">Daftar Laporan</a></li>
 			<li><a href="#">Logout</a></li>
 			
 		</ul>
@@ -71,7 +71,7 @@
                                                 	<h3 class="p2">Halaman Admin - Daftar Laporan</h3>
 													<?php echo "<h2>".$this->session->flashdata('pesan')."</h2>"?>
 													<table id="tabel_laporan" class="display" cellspacing="0" width="100%" >
-													<thead>
+													<thead><th>
 													<tr style="background:grey;">
 															<td>Nomor </td>
 															<th>ID Laporan</th>

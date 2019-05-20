@@ -70,6 +70,71 @@ class Dbs extends CI_Controller {
 		}
 	}
 
+	public function add_data_acara()
+	{
+		$this->load->view('form_add_acara');
+	}
+
+	public function do_insert_acara()
+	{
+		$judul = $_POST['judul'];
+		$deskripsi = $_POST['deskripsi'];
+		$is_free = $_POST['is_free'];
+		$tgl_mulai = $_POST['tgl_mulai'];
+		$tgl_akhir = $_POST['tgl_akhir'];
+		$id_stasiun = $_POST['id_stasiun'];
+		$data_insert = array(
+			'judul' => $judul,
+			'deskripsi' => $deskripsi,
+			'is_free' => $is_free,
+			'tgl_mulai' => $tgl_mulai,
+			'tgl_akhir' => $tgl_akhir,
+			'id_stasiun' => $id_stasiun,
+		);
+		$res = $this->mymodel->InsertData('acara',$data_insert);
+		if($res>=1){
+			redirect('dbs/daftar_acara_admin');
+		}else{
+			echo "h2>Insert Data Gagal</h2>";
+		}
+	}
+
+	public function edit_data_acara($ktp){
+		$png = $this->mymodel->GetAcara("where ktp = '$ktp'");
+		$data = array(
+			"ktp" => $ktp[0]['ktp'],
+			"start_datetime" => $ktp[0]['start_datetime'],
+			"end_datetime" => $ktp[0]['end_datetime'],
+			"id_stasiun" => $ktp[0]['id_stasiun'],
+			);
+		$this->load->view('form_edit',$data);
+	}
+
+	public function do_update_acara(){
+		$ktp = $_POST['ktp'];
+		$start_datetime = $_POST['start_datetime'];
+		$end_datetime = $_POST['end_datetime'];
+		$id_stasiun = $_POST['id_stasiun'];
+		$data_update = array(
+			'start_datetime' => $start_datetime,
+			'end_datetime' => $end_datetime,
+			'id_stasiun' => $id_stasiun
+		);
+		$where =  array('ktp' => $ktp);
+		$res = $this->mymodel->UpdateData('penugasan',$data_update,$where);
+		if($res>=1){
+			redirect('dbs/daftar_penugasan_admin');
+		}
+	}
+
+	public function do_delete_acara($ktp){
+		$where = array('ktp' => $ktp);
+		$res = $this->mymodel->DeleteData('acara',$where);
+		if($res>=1){
+			redirect('dbs/daftar_acara_admin');
+		}
+	}
+
 	public function topup_sbp() {
 		$nom=$_POST['nominal'];
 		$data_insert=array(
@@ -94,7 +159,8 @@ class Dbs extends CI_Controller {
 	}
 
 	public function daftar_acara_admin(){
-		$this->load->view('admin/daftar_acara_admin.php');
+		$data=$this->mymodel->GetAcara();	
+		$this->load->view('admin/daftar_acara_admin.php',array('data'=>$data));
 	}
 
 	public function daftar_acara_anggota(){

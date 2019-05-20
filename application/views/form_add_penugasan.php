@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Halaman Admin - Daftar Peminjaman</title>
+    <title>Halaman Admin - Daftar Penugasan</title>
     <link rel="stylesheet" href="<?php echo base_url('assets/css/reset.css')?>" type="text/css" media="screen">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css')?>" type="text/css" media="screen">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/grid.css')?>" type="text/css" media="screen">
@@ -27,8 +27,8 @@ $("#tanggal").datepicker();
 		<ul>
 			<li class="dropdown"><a href="#">Acara</a>
 			<ul class="isi-dropdown">
-					<li><a href="#">Tambah Acara</a></li>
-					<li><a href="#">Daftar Acara</a></li>
+					<li><a href="<?php echo base_url()."dbs/add_data_acara";?>">Tambah Acara</a></li>
+					<li><a href="<?php echo base_url()."dbs/daftar_acara_admin";?>">Daftar Acara</a></li>
 				</ul></li>
 			<li class="dropdown"><a href="#">Petugas</a>
 			<ul class="isi-dropdown">
@@ -85,11 +85,11 @@ $("#tanggal").datepicker();
 		</tr>
 		<tr>
 			<td>Tanggal Mulai</td>
-			<td><input id="tanggal" type="text" size="50" maxlength="50" name="isitgl"/></td>
+			<td><input id="tanggal" type="text" size="50" maxlength="50" name="start_datetime"/></td>
 		</tr>
 		<tr>
 			<td>Tanggal Selesai</td>
-			<td><input type="text" name="end_datetime" /></td>
+			<td><input id="tanggal" type="text" size="50" maxlength="50" name="end_datetime"/></td>
 		</tr>
 		<tr>
 			<td>Stasiun</td>
@@ -97,7 +97,7 @@ $("#tanggal").datepicker();
 		</tr>
 		<tr>
 			<td></td>
-			<td cols="3"><input type="submit" name="btnSubmit" value="SUBMIT" /></td>
+			<td cols="3"><input class="button" type="submit" name="btnSubmit" value="SUBMIT" /></td>
 		</tr>
 	</table>
 	</form>

@@ -24,11 +24,11 @@
 		<div class="menu-kelompok1">
  
 		<ul>
-			<li><a href="#">Daftar Penugasan</a></li>
+			<li><a href="<?php echo base_url()."dbs/daftar_penugasan_petugas";?>">Daftar Penugasan</a></li>
 			<li><a href="#">Daftar Stasiun</a></li>
 			<li><a href="#">Daftar Sepeda</a></li>
 			<li><a href="#">Daftar Acara</a></li>
-			<li><a href="#">Daftar Laporan</a></li>
+			<li><a href="<?php echo base_url()."dbs/daftar_laporan_petugas";?>">Daftar Laporan</a></li>
 			<li><a href="#">Daftar Peminjaman</a></li>
 			<li><a href="#">Daftar Voucher</a></li>
 			<li><a href="#">Logout</a></li>
@@ -56,7 +56,7 @@
 													
 													<?php echo "<h2>".$this->session->flashdata('pesan')."</h2>"?>
 													<table id="tabel_laporan" class="display" cellspacing="0" width="100%">
-														<thead>
+														<thead><th>
 														<tr style="background:grey;">
 															<th>Nomor </th>
 															<th>ID Laporan</th>

@@ -26,6 +26,11 @@ class Mymodel extends CI_Model {
 		$data = $this->db->query('select * from penugasan'.$where);
 		return $data->result_array();
 	}
+
+	public function GetAcara($where=""){
+		$data = $this->db->query('select * from acara'.$where);
+		return $data->result_array();
+	}
 	
 	public function InsertData($tabelName,$data){
 		$res=$this->db->insert($tabelName,$data);
