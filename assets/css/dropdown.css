@@ -4,17 +4,8 @@ html,body{
 		font-family: sans-serif;
 	}
 
-table {
-  border-spacing: 5px;
-}
 
-table, tr, td {
-  border: 1px solid black;
-}
 
-table2, tr, td {
-  border: 0px solid black;
-}
  
 	.menu-kelompok1{
 		background-color: #1e2126;

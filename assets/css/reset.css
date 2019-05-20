@@ -19,11 +19,7 @@ video {display:block}
 
 ol, ul {}
 blockquote, q {quotes: none;}
-table, table td { 
-	padding:10px;
-	border:none;
-	border-collapse:collapse;
-}
+
 img {vertical-align:top;}
 embed {vertical-align:top;}
 
