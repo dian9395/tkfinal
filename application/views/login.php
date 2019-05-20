@@ -30,8 +30,9 @@ $("#tanggal").datepicker();
                                         <div class="wrapper">
                                             <div class="grid_12">
                                             	<div class="indent-left">
-                                                	<h3 class="p2">Form Login</h3>
-                                               
+                                                    <h3 class="p2">Form Login</h3>
+                                                    
+                                              
 <table>
 <form name="register" id="contact-form" method="post" action="" enctype="multipart/form-data" onSubmit="return valregister()">
 <fieldset><br></br>
