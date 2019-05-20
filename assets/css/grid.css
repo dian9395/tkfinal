@@ -1,0 +1,30 @@
+
+
+.container_12 {
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+}
+div, body {margin: 0;}
+.grid_4,
+.grid_3,
+.grid_9,
+.grid_12 {
+	display:inline;
+	float: left;
+	position: relative;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.container_12 .grid_3 {width:220px;}
+.container_12 .grid_4 {width:300px;}
+.container_12 .grid_9 {width:700px;}
+.container_12 .grid_12 {width:940px;}
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}

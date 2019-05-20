@@ -1,0 +1,75 @@
+html,body{
+		padding: 0;
+		margin:0;
+		font-family: sans-serif;
+	}
+
+table {
+  border-spacing: 5px;
+}
+
+table, tr, td {
+  border: 1px solid black;
+}
+
+table2, tr, td {
+  border: 0px solid black;
+}
+ 
+	.menu-kelompok1{
+		background-color: #1e2126;
+	}
+ 
+	.menu-kelompok1 ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+	}
+ 
+	.menu-kelompok1 > ul > li {
+		float: left;
+	}
+ 
+	
+	.menu-kelompok1 li a {
+		display: inline-block;
+		color: white;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+	}
+ 
+	.menu-kelompok1 li a:hover{
+		background-color: #20caf9;
+	}
+ 
+	li.dropdown {
+		display: inline-block;
+	}
+ 
+	.dropdown:hover .isi-dropdown {
+		display: block;
+	}
+ 
+	.isi-dropdown a:hover {
+		color: #fff !important;
+	}
+ 
+	.isi-dropdown {
+		position: absolute;
+		display: none;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		z-index: 1;
+		background-color: #f9f9f9;
+	}
+ 
+	.isi-dropdown a {
+		color: #3c3c3c !important;
+	}
+ 
+	.isi-dropdown a:hover {
+		color: #232323 !important;
+		background: #f3f3f3 !important;
+	}
+</style>
