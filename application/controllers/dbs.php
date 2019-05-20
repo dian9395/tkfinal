@@ -6,7 +6,7 @@ class Dbs extends CI_Controller {
 		//$data=$this->mymodel->GetMahasiswa();		
 		//$this->load->view('index.php');
 		//$data=$this->mymodel->GetMahasiswa();		
-		$this->load->view('index.php');
+		$this->load->view('index');
 	}
 
 	public function add_data() {
@@ -82,15 +82,15 @@ class Dbs extends CI_Controller {
 	}
 
 	public function daftar_acara_admin(){
-		$this->load->view('daftar_acara_admin.php');
+		$this->load->view('admin/daftar_acara_admin.php');
 	}
 
 	public function daftar_acara_anggota(){
-		$this->load->view('daftar_acara_anggota.php');
+		$this->load->view('anggota/daftar_acara_anggota.php');
 	}
 
 	public function daftar_acara_petugas(){
-		$this->load->view('daftar_acara_petugas.php');
+		$this->load->view('petugas/daftar_acara_petugas.php');
 	}
 
 	public function daftar_laporan_admin(){
@@ -100,31 +100,31 @@ class Dbs extends CI_Controller {
 
 	public function daftar_laporan_petugas(){
 		$data=$this->mymodel->GetLaporan();		
-		$this->load->view('daftar_laporan_petugas.php',array('data'=>$data));
+		$this->load->view('petugas/daftar_laporan_petugas.php',array('data'=>$data));
 	}
 
-	public function daftar_peminjaman (){
+	public function daftar_peminjaman_admin (){
 		$data=$this->mymodel->GetPeminjaman();		
-		$this->load->view('daftar_peminjaman.php',array('data'=>$data));
+		$this->load->view('admin/daftar_peminjaman_admin.php',array('data'=>$data));
 	}
 
 	public function daftar_penugasan_admin(){
-		$this->load->view('daftar_penugasan_admin.php');
+		$this->load->view('admin/daftar_penugasan_admin.php');
 	}
 
 	public function daftar_penugasan_petugas(){
 		$data=$this->mymodel->GetPenugasan();		
-		$this->load->view('daftar_penugasan_petugas',array('data'=>$data));
+		$this->load->view('petugas/daftar_penugasan_petugas.php',array('data'=>$data));
 	}
 
 	public function daftar_sepeda_admin(){
 		$data=$this->mymodel->GetSepeda();		
-		$this->load->view('daftar_sepeda_admin.php',array('data'=>$data));
+		$this->load->view('admin/daftar_sepeda_admin.php',array('data'=>$data));
 	}
 
 	public function daftar_sepeda_anggota(){
 		$data=$this->mymodel->GetSepeda();		
-		$this->load->view('daftar_sepeda_anggota.php',array('data'=>$data));
+		$this->load->view('anggota/daftar_sepeda_anggota.php',array('data'=>$data));
 	}
 
 	public function login (){
@@ -141,7 +141,7 @@ class Dbs extends CI_Controller {
 
 	public function riwayat_transaksi(){
 		$data=$this->mymodel->GetRiwayatTransaksi();		
-		$this->load->view('riwayat_transaksi.php',array('data'=>$data));
+		$this->load->view('anggota/riwayat_transaksi.php',array('data'=>$data));
 	}
 
 	public function topup(){

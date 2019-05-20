@@ -25,7 +25,7 @@
                                             	<div class="indent-left">
                                                 	                                               
 <table>
-    <form name="register" id="contact-form" method="post" enctype="multipart/form-data" onSubmit="return valregister()" action="<?php echo base_url()."index.php/crud/login";?>" >		
+    <form name="register" id="contact-form" method="post" enctype="multipart/form-data" onSubmit="return valregister()" action="<?php echo base_url()."dbs/login";?>" >		
 	<fieldset><br></br>
 <h4><a href="index.html"><center><img src="<?php echo base_url('assets/images/Depok Bike Sharing.jpg')?>" width=620px height=207px> </center></a></h4> 
 										<center><tr>
@@ -38,7 +38,7 @@
 </fieldset>	
 </form>
 
-<form name="register" id="contact-form" method="post" enctype="multipart/form-data" onSubmit="return valregister()" action="<?php echo base_url()."index.php/crud/pendaftaran";?>" >		
+<form name="register" id="contact-form" method="post" enctype="multipart/form-data" onSubmit="return valregister()" action="<?php echo base_url()."dbs/pendaftaran";?>" >		
 	<fieldset><br></br>
 										<center><tr>										
 										<td cols="3"> <input class="button" type="submit" name="tombol" value="SIGN UP"></a></td>
