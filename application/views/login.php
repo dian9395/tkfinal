@@ -32,23 +32,7 @@ $("#tanggal").datepicker();
                                             	<div class="indent-left">
                                                     <h3 class="p2">Form Login</h3>
                                                     
-<? php 
-$ktp = $_POST['ktp'];
-$email = ($_POST['email']);
- 
-$login = mysql_query("select * from person where ktp='$ktp' and email='$email'");
-$cek = mysql_num_rows($login);
- 
-if($cek > 0){
-	session_start();
-	$_SESSION['ktp'] = $ktp;
-	$_SESSION['status'] = "login";
-	header("location:admin/index.php");
-}else{
-	header("location:index.php");	
-} ?>
-
-                                               
+                                              
 <table>
 <form name="register" id="contact-form" method="post" action="" enctype="multipart/form-data" onSubmit="return valregister()">
 <fieldset><br></br>
