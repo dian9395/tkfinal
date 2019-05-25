@@ -34,18 +34,17 @@ $("#tanggal").datepicker();
                                                     
                                               
 <table>
-<form name="register" id="contact-form" method="post" action="" enctype="multipart/form-data" onSubmit="return valregister()">
+<form name="register" id="contact-form" method="post" action="<?php echo base_url('dbs/aksi_login'); ?>"  enctype="multipart/form-data" onSubmit="return valregister()">
 <fieldset><br></br>
 <tr> 
 	<td> <b>Nomor KTP</b> </td>
 	<td> : </td>
-	<td> <input type="text" size="60" maxlength="60" name="isinama"></td>
+	<td> <input type="text" size="60" maxlength="60" name="noktp"></td>
 </tr>
 
-<tr>
 	<td> <b>Email</b> </td>
 	<td> : </td>
-	<td> <input type="text" size="60" maxlength="60" name="isiemail"></td>
+	<td> <input type="text" size="60" maxlength="60" name="email"></td>
 </tr>
 
 

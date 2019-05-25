@@ -209,6 +209,37 @@ class Dbs extends CI_Controller {
 	public function login (){
 		$this->load->view('login');
 	}
+	
+	public function vlogin (){
+		$this->load->view('v_login');
+	}
+
+	function aksi_login(){
+		$username = $this->input->post('noktp');
+		$password = $this->input->post('email');
+		$where = array(
+			'ktp' => $username,
+			'email' =>$password
+			);
+		$cek = $this->mymodel->cek_login("person",$where)->num_rows();
+		if($cek > 0){
+
+			$data_session = array(
+				'nama' => $username,
+				'status' => "login"
+				);
+
+			$this->session->set_userdata($data_session);
+
+			redirect(base_url("dbs/daftar_peminjaman_admin"));
+
+		}else{
+			echo "Username dan password salah. Silakan ke halaman sebelumnya dan ulangi.";
+		}
+	}
+	public function admin (){
+		$this->load->view('v_admin');
+	}
 
 	public function pendaftaran (){
 		$this->load->view('pendaftaran.php');
