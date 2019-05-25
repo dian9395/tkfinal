@@ -46,6 +46,10 @@ class Mymodel extends CI_Model {
 		$res=$this->db->delete($tabelName,$where);
 		return $res;
 	}
+
+	function cek_login($table,$where){		
+		return $this->db->get_where($table,$where);
+	}	
 	
 }
 ?>

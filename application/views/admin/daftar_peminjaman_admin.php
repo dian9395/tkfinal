@@ -51,7 +51,7 @@
 			</li>
 			<li><a href="<?php echo base_url()."dbs/daftar_peminjaman_admin";?>">Daftar Peminjaman</a></li>
 			<li><a href="<?php echo base_url()."dbs/daftar_laporan_admin";?>">Daftar Laporan</a></li>
-			<li><a href="<?php echo base_url()."index.php";?>">Logout</a></li>
+			<li><a href="<?php echo base_url('dbs/logout'); ?>">Logout</a>>Logout</a></li>
 			
 		</ul>
  
