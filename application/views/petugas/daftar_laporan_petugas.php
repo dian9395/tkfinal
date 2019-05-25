@@ -27,7 +27,7 @@
 			<li><a href="<?php echo base_url()."dbs/daftar_penugasan_petugas";?>">Daftar Penugasan</a></li>
 			<li><a href="#">Daftar Stasiun</a></li>
 			<li><a href="#">Daftar Sepeda</a></li>
-			<li><a href="#">Daftar Acara</a></li>
+			<li><a href="<?php echo base_url()."dbs/daftar_acara_petugas";?>">Daftar Acara</a></li>
 			<li><a href="<?php echo base_url()."dbs/daftar_laporan_petugas";?>">Daftar Laporan</a></li>
 			<li><a href="#">Daftar Peminjaman</a></li>
 			<li><a href="#">Daftar Voucher</a></li>

@@ -1,4 +1,4 @@
-<html>
+ <html>
 <head>
     <title>Halaman Admin - Daftar Penugasan</title>
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/reset.css')?>" type="text/css" media="screen">
@@ -65,14 +65,14 @@
                                             <div class="grid_12">
                                             	<div class="indent-left">
                                                 	<h3 class="p2">Halaman Admin - Daftar Penugasan</h3>
-                                                	<?php echo "<h2>".$this->session->flashdata('pesan')."</h2>"?>
+                                                	<?php echo "<h2>".$this->session->flashdata('pesan')."</h2>" ?>
 													<table id="tabel_penugasan" class="display" cellspacing="0" width="100%">
 													<thead><th>
 														<tr style="background:grey;">
 															<th>Petugas</th>
 															<th>Tanggal Mulai</th>
-															<th>Tanggal Selesai</th>
 															<th>Stasiun</th>
+															<th>Tanggal Selesai</th>
 															<th>Action</th>
 														</tr>
 													</thead>
@@ -82,11 +82,11 @@
 														<tr>
 															<td><?php echo $col['ktp'];?></td>
 															<td><?php echo $col['start_datetime'];?></td>
+															<td><?php echo $col['id_stasiun'];?></td>
 															<td><?php echo $col['end_datetime'];?></td>
-															<td><?php echo $col['id_stasiun'];?></td>	
 															<td align="center">
-																<a href="#">Update</a> ||
-																<a href="#">Delete</a>
+																<a href="<?php echo base_url()."dbs/edit_data_penugasan/".$col['ktp']; ?>">Update</a> ||
+																<a href="<?php echo base_url()."dbs/do_delete_penugasan/".$col['ktp']; ?>">Delete</a>
 															</td>				
 														</tr>
 														<?php }	?>

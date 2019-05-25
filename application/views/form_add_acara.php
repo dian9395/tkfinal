@@ -6,13 +6,13 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/grid.css')?>" type="text/css" media="screen">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/dropdown.css')?>" type="text/css" media="screen"> 
     <link type="text/css" href="<?php echo base_url('assets/jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet"/>  	
-	<script type="text/javascript" href="<?php echo base_url('assets/js/jquery-2.1.1.min.js')?>"</script>  
-	<script type="text/javascript" href="<?php echo base_url('assets/jquery-ui-1.11.2/jquery-ui.js')?>"</script>  
-	<script type="text/javascript" href="<?php echo base_url('assets/js/jquery.ui.datepicker-id.js')?>"</script>  
+	<script src="<?php echo base_url('assets/datepick/datepick.js')?>"></script>
+	<script src="<?php echo base_url('assets/datepick/datepickui.js')?>"></script>
+
 <script type="text/javascript"> 
 $("document").ready(function(){ 
-$("#tanggal").datepicker();
-
+		$("#datepicker").datepicker();
+		$("#datepicker1").datepicker();
 }); 
 </script> 
 </head>
@@ -77,7 +77,7 @@ $("#tanggal").datepicker();
                                                 	<h3 class="p2">Form Penambahan Acara</h3>
 
 
-	<form method="POST" action="<?php echo base_url()."/daftar_acara_admin/do_insert_acara"; ?>">
+	<form method="POST" action="<?php echo base_url()."dbs/do_insert_acara"; ?>">
 	<table>
 		<tr>
 			<td>Judul</td>
@@ -88,16 +88,16 @@ $("#tanggal").datepicker();
 			<td><input type="text" name="deskripsi" /></td>
 		</tr>
 		<tr>
-			<td>Gratis</td>
-			<td><input type="text" name="is_free" /></td>
-		</tr>
-		<tr>
 			<td>Tanggal Mulai</td>
-			<td><input id="tanggal" type="text" size="50" maxlength="50" name="tgl_mulai"/></td>
+			<td><input id="datepicker" type="text" size="50" maxlength="50" name="tgl_mulai"/></td>
 		</tr>
 		<tr>
 			<td>Tanggal Selesai</td>
-			<td><input id="tanggal" type="text" size="50" maxlength="50" name="tgl_akhir"/></td>
+			<td><input id="datepicker1" type="text" size="50" maxlength="50" name="tgl_akhir"/></td>
+		</tr>
+		<tr>
+			<td>Gratis</td>
+			<td><input type="text" name="is_free" /></td>
 		</tr>
 		<tr>
 			<td>Stasiun</td>

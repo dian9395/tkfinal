@@ -1,4 +1,4 @@
-<?php
+ <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dbs extends CI_Controller {
@@ -11,6 +11,7 @@ class Dbs extends CI_Controller {
 
 	public function add_data_penugasan()
 	{
+		// ambil data petugas
 		$this->load->view('form_add_penugasan');
 	}
 
@@ -18,42 +19,43 @@ class Dbs extends CI_Controller {
 	{
 		$ktp = $_POST['ktp'];
 		$start_datetime = $_POST['start_datetime'];
-		$end_datetime = $_POST['end_datetime'];
 		$id_stasiun = $_POST['id_stasiun'];
+		$end_datetime = $_POST['end_datetime'];
 		$data_insert = array(
 			'ktp' => $ktp,
 			'start_datetime' => $start_datetime,
-			'end_datetime' => $end_datetime,
-			'id_stasiun' => $id_stasiun
+			'id_stasiun' => $id_stasiun,
+			'end_datetime' => $end_datetime
 		);
 		$res = $this->mymodel->InsertData('penugasan',$data_insert);
 		if($res>=1){
+			$this->session->set_flashdata('pesan','Tambah Data Sukses!!');
 			redirect('dbs/daftar_penugasan_admin');
 		}else{
-			echo "h2>Insert Data Gagal</h2>";
+			echo "<h2>Insert Data Gagal</h2>";
 		}
 	}
 
 	public function edit_data_penugasan($ktp){
 		$png = $this->mymodel->GetPenugasan("where ktp = '$ktp'");
 		$data = array(
-			"ktp" => $ktp[0]['ktp'],
-			"start_datetime" => $ktp[0]['start_datetime'],
-			"end_datetime" => $ktp[0]['end_datetime'],
-			"id_stasiun" => $ktp[0]['id_stasiun'],
-			);
-		$this->load->view('form_edit',$data);
+			"ktp" => $png[0]['ktp'],
+			"start_datetime" => $png[0]['start_datetime'],
+			"id_stasiun" => $png[0]['id_stasiun'],
+			"end_datetime" => $png[0]['end_datetime'],
+		);
+		$this->load->view('form_edit_penugasan',$data);
 	}
 
 	public function do_update_penugasan(){
 		$ktp = $_POST['ktp'];
 		$start_datetime = $_POST['start_datetime'];
-		$end_datetime = $_POST['end_datetime'];
 		$id_stasiun = $_POST['id_stasiun'];
+		$end_datetime = $_POST['end_datetime'];
 		$data_update = array(
 			'start_datetime' => $start_datetime,
-			'end_datetime' => $end_datetime,
-			'id_stasiun' => $id_stasiun
+			'id_stasiun' => $id_stasiun,
+			'end_datetime' => $end_datetime
 		);
 		$where =  array('ktp' => $ktp);
 		$res = $this->mymodel->UpdateData('penugasan',$data_update,$where);
@@ -69,7 +71,7 @@ class Dbs extends CI_Controller {
 			redirect('dbs/daftar_penugasan_admin');
 		}
 	}
-
+ 
 	public function add_data_acara()
 	{
 		$this->load->view('form_add_acara');
@@ -79,20 +81,21 @@ class Dbs extends CI_Controller {
 	{
 		$judul = $_POST['judul'];
 		$deskripsi = $_POST['deskripsi'];
-		$is_free = $_POST['is_free'];
 		$tgl_mulai = $_POST['tgl_mulai'];
 		$tgl_akhir = $_POST['tgl_akhir'];
+		$is_free = $_POST['is_free'];
 		$id_stasiun = $_POST['id_stasiun'];
 		$data_insert = array(
 			'judul' => $judul,
 			'deskripsi' => $deskripsi,
-			'is_free' => $is_free,
 			'tgl_mulai' => $tgl_mulai,
 			'tgl_akhir' => $tgl_akhir,
+			'is_free' => $is_free,
 			'id_stasiun' => $id_stasiun,
 		);
 		$res = $this->mymodel->InsertData('acara',$data_insert);
 		if($res>=1){
+			$this->session->set_flashdata('pesan','Tambah Data Sukses!!');
 			redirect('dbs/daftar_acara_admin');
 		}else{
 			echo "h2>Insert Data Gagal</h2>";
@@ -100,35 +103,38 @@ class Dbs extends CI_Controller {
 	}
 
 	public function edit_data_acara($ktp){
-		$png = $this->mymodel->GetAcara("where ktp = '$ktp'");
+		$acr = $this->mymodel->GetAcara("where judul = '$judul'");
 		$data = array(
-			"ktp" => $ktp[0]['ktp'],
-			"start_datetime" => $ktp[0]['start_datetime'],
-			"end_datetime" => $ktp[0]['end_datetime'],
+			"judul" => $ktp[0]['ktp'],
+			"deskripsi" => $ktp[0]['deskripsi'],
+			"tgl_mulai" => $ktp[0]['tgl_mulai'],
+			"tgl_akhir" => $ktp[0]['tgl_akhir'],
 			"id_stasiun" => $ktp[0]['id_stasiun'],
 			);
-		$this->load->view('form_edit',$data);
+		$this->load->view('form_edit_acara',$data);
 	}
 
 	public function do_update_acara(){
-		$ktp = $_POST['ktp'];
-		$start_datetime = $_POST['start_datetime'];
-		$end_datetime = $_POST['end_datetime'];
-		$id_stasiun = $_POST['id_stasiun'];
+		$judul = $_POST['judul'];
+		$deskripsi = $_POST['deskripsi'];
+		$tgl_mulai = $_POST['tgl_mulai'];
+		$tgl_akhir= $_POST['tgl_akhir'];
+		$id_stasiun= $_POST['id_stasiun'];
 		$data_update = array(
-			'start_datetime' => $start_datetime,
-			'end_datetime' => $end_datetime,
-			'id_stasiun' => $id_stasiun
+			'deskripsi' => $deskripsi,
+			'tgl_mulai' => $tgl_mulai,
+			'tgl_akhir' => $tgl_akhir,
+			'id_stasiun' => $id_stasiun,
 		);
-		$where =  array('ktp' => $ktp);
-		$res = $this->mymodel->UpdateData('penugasan',$data_update,$where);
+		$where =  array('judul' => $judul);
+		$res = $this->mymodel->UpdateData('acara',$data_update,$where);
 		if($res>=1){
-			redirect('dbs/daftar_penugasan_admin');
+			redirect('dbs/daftar_penugasan_acara');
 		}
 	}
 
-	public function do_delete_acara($ktp){
-		$where = array('ktp' => $ktp);
+	public function do_delete_acara($judul){
+		$where = array('judul' => $judul);
 		$res = $this->mymodel->DeleteData('acara',$where);
 		if($res>=1){
 			redirect('dbs/daftar_acara_admin');
@@ -164,11 +170,13 @@ class Dbs extends CI_Controller {
 	}
 
 	public function daftar_acara_anggota(){
-		$this->load->view('anggota/daftar_acara_anggota.php');
+		$data=$this->mymodel->GetAcara();	
+		$this->load->view('anggota/daftar_acara_anggota.php',array('data'=>$data));
 	}
 
 	public function daftar_acara_petugas(){
-		$this->load->view('petugas/daftar_acara_petugas.php');
+		$data=$this->mymodel->GetAcara();	
+		$this->load->view('petugas/daftar_acara_petugas.php',array('data'=>$data));
 	}
 
 	public function daftar_laporan_admin(){

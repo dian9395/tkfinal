@@ -23,7 +23,7 @@ class Mymodel extends CI_Model {
 	}
 
 	public function GetPenugasan($where=""){
-		$data = $this->db->query('select * from penugasan'.$where);
+		$data = $this->db->query('select * from penugasan '.$where);
 		return $data->result_array();
 	}
 

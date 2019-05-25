@@ -4,23 +4,15 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/reset.css')?>" type="text/css" media="screen">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css')?>" type="text/css" media="screen">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/grid.css')?>" type="text/css" media="screen">
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/dropdown.css')?>" type="text/css" media="screen"> 
-    <link type="text/css" href="jquery-ui-1.11.2/jquery-ui.css" rel="stylesheet"/>       
-    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>  
-    <script type="text/javascript" src="jquery-ui-1.11.2/jquery-ui.js"></script>  
-    <script type="text/javascript" src="js/jquery.ui.datepicker-id.js"></script>  
-<script type="text/javascript"> 
-$("document").ready(function(){ 
-$("#tanggal").datepicker();
-}); 
-</script> 
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/dropdown.css')?>" type="text/css" media="screen"> 
+    <link rel="stylesheet" href="<?php echo base_url('assets/DataTables-1.10.18/css/jquery.dataTables.css ')?>" type="text/css" media="screen"> 
+    <link type="text/css" href="<?php echo base_url('assets/jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet"/>      
+    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-2.1.1.min.js')?>"></script>  
+    <script type="text/javascript" src="<?php echo base_url('assets/DataTables-1.10.18/js/jquery.dataTables.min.js')?>" ></script>  
+    <script type="text/javascript" src="<?php echo base_url('assets/DataTables-1.10.18/js/dataTables.bootstrap.js')?>" ></script>
+</head>  
 
-
-</head>
-
-     
-
-<body id="page5">
+<body>
     <header class="header">
 
     <div class="menu-kelompok1">
@@ -42,7 +34,7 @@ $("#tanggal").datepicker();
                     <li><a href="#">Riwayat Transaksi</a></li>
                 </ul>
             </li>
-            <li><a href="#">Daftar Acara</a></li>
+            <li><a href="<?php echo base_url()."dbs/daftar_acara_anggota";?>">Daftar Acara</a></li>
             <li><a href="#">Daftar Voucher</a></li>
             <li><a href="#">Logout</a></li>
             
@@ -64,45 +56,33 @@ $("#tanggal").datepicker();
                                             <div class="grid_12">
                                                 <div class="indent-left">
                                                     <h3 class="p2">Halaman Anggota - Daftar Acara </h3>
-                                                    
+                                                    <?php echo "<h2>".$this->session->flashdata('pesan')."</h2>"?>
+                                                    <table id="tabel_acara" class="display" cellspacing="0" width="100%">
+                                                    <thead><th>
+                                                        <tr style="background:grey;">
+                                                            <th>Judul</th>
+                                                            <th>Deskripsi</th>
+                                                            <th>Tanggal Mulai</th>
+                                                            <th>Tanggal Akhir</th>
+                                                            <th>Is Free</th>
+                                                        </tr>
+                                                    </thead>
+                                                        <tbody>
+                                                        <?php
+                                                            foreach ($data as $col){?>
+                                                        <tr>
+                                                            <td><?php echo $col['judul'];?></td>
+                                                            <td><?php echo $col['deskripsi'];?></td>
+                                                            <td><?php echo $col['tgl_mulai'];?></td>
+                                                            <td><?php echo $col['tgl_akhir'];?></td>
+                                                            <td><?php echo $col['is_free'];?></td>
+                                                        </tr>
+                                                        <?php } ?>
+                                                        </tbody>
+                                                    </table>
 
                   
-<table>
-<form name="register" id="contact-form" method="post" action="" enctype="multipart/form-data" onSubmit="return valregister()">
-<fieldset><br></br>
-<tr> 
-    <td> No </td>
-    <td> Judul </td>
-    <td> Deskripsi</td>
-    <td> Tanggal Mulai</td>
-    <td> Tanggal Akhir</td>
-    <td> Is Free </td>
-</tr>
 
-<tr> 
-    <td> 1 </td>
-    <td> Ulang tahun 
-    sharebike</td>
-    <td> Game-game </td>
-    <td> 15 April 2019 </td>
-    <td> 15 April 2019 </td>
-    <td> Ya </td>
-</tr>
-
-<tr> 
-    <td> dst </td>
-    <td> dst </td>
-    <td> dst</td>
-    <td> dst</td>
-    <td> dst </td>
-    <td> dst</td>
-
-</tr>
-</fieldset>     
-</form>
-</table> 
-
-                                                
                                                 </div>
                                             </div>
                                         </div>
@@ -115,6 +95,7 @@ $("#tanggal").datepicker();
         </div>
  
     </section>
+
     <footer>
         <div class="main">
             <div class="container_12">
@@ -126,5 +107,9 @@ $("#tanggal").datepicker();
             </div>
         </div>
     </footer>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('#tabel_acara').DataTable();
+    }); </script>
 </body>
 </html>

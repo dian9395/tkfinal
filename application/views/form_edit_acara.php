@@ -1,21 +1,29 @@
 <html>
 <head>
     <title>Halaman Admin - Daftar Acara</title>
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/reset.css')?>" type="text/css" media="screen">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/reset.css')?>" type="text/css" media="screen">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css')?>" type="text/css" media="screen">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/grid.css')?>" type="text/css" media="screen">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/dropdown.css')?>" type="text/css" media="screen"> 
-	<link rel="stylesheet" href="<?php echo base_url('assets/DataTables-1.10.18/css/jquery.dataTables.css ')?>" type="text/css" media="screen"> 
-    <link type="text/css" href="<?php echo base_url('assets/jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet"/>   	
-	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-2.1.1.min.js')?>"></script>  
-	<script type="text/javascript" src="<?php echo base_url('assets/DataTables-1.10.18/js/jquery.dataTables.min.js')?>" ></script>  
-	<script type="text/javascript" src="<?php echo base_url('assets/DataTables-1.10.18/js/dataTables.bootstrap.js')?>" ></script>
+    <link type="text/css" href="<?php echo base_url('assets/jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet"/>  	
+	<script type="text/javascript" href="<?php echo base_url('assets/js/jquery-2.1.1.min.js')?>"</script>  
+	<script type="text/javascript" href="<?php echo base_url('assets/jquery-ui-1.11.2/jquery-ui.js')?>"</script>  
+	<script type="text/javascript" href="<?php echo base_url('assets/js/jquery.ui.datepicker-id.js')?>"</script>  
+<script type="text/javascript"> 
+$("document").ready(function(){ 
+$("#tanggal").datepicker();
+
+}); 
+</script> 
 </head>
        
 
 <body id="page5">
 	<header class="header">
-	<div class="menu-kelompok1">
+
+	
+		<div class="menu-kelompok1">
+ 
 		<ul>
 			<li class="dropdown"><a href="#">Acara</a>
 			<ul class="isi-dropdown">
@@ -45,10 +53,12 @@
 					<li><a href="#">Daftar Voucher</a></li>
 				</ul>
 			</li>
-			<li><a href="<?php echo base_url()."dbs/daftar_peminjaman_admin";?>">Daftar Peminjaman</a></li>
-			<li><a href="<?php echo base_url()."dbs/daftar_laporan_admin";?>">Daftar Laporan</a></li>
+			<li><a href="#">Daftar Peminjaman</a></li>
+			<li><a href="#">Daftar Laporan</a></li>
 			<li><a href="#">Logout</a></li>
+			
 		</ul>
+ 
 	</div>
 </header>
     
@@ -64,36 +74,42 @@
                                         <div class="wrapper">
                                             <div class="grid_12">
                                             	<div class="indent-left">
-                                                	<h3 class="p2">Halaman Admin - Daftar Acara</h3>
-                                                	<?php echo "<h2>".$this->session->flashdata('pesan')."</h2>"?>
-													<table id="tabel_acara" class="display" cellspacing="0" width="100%">
-													<thead><th>
-														<tr style="background:grey;">
-															<th>Judul</th>
-															<th>Deskripsi</th>
-															<th>Tanggal Mulai</th>
-															<th>Tanggal Akhir</th>
-															<th>Is Free</th>
-															<th>Action</th>
-														</tr>
-													</thead>
-														<tbody>
-														<?php
-															foreach ($data as $col){?>
-														<tr>
-															<td><?php echo $col['judul'];?></td>
-															<td><?php echo $col['deskripsi'];?></td>
-															<td><?php echo $col['tgl_mulai'];?></td>
-															<td><?php echo $col['tgl_akhir'];?></td>
-															<td><?php echo $col['is_free'];?></td>	
-															<td align="center">
-																<a href="<?php echo base_url()."dbs/daftar_acara_admin/edit_data_acara/".$col['judul']; ?>">Update</a> ||
-																<a href="<?php echo base_url()."dbs/daftar_acara_admin/do_delete_acara/".$col['judul']; ?>">Delete</a>
-															</td>				
-														</tr>
-														<?php }	?>
-														</tbody>
-													</table> 
+                                                	<h3 class="p2">Form Update Acara</h3>
+
+
+	<form method="POST" action="<?php echo base_url()."dbs/daftar_acara_admin/do_insert_acara"; ?>">
+	<table>
+		<tr>
+			<td>Judul</td>
+			<td><input type="text" name="judul" value="<?php echo $judul; ?>" /></td>
+		</tr>
+		<tr>
+			<td>Deskripsi</td>
+			<td><input type="text" name="deskripsi" value="<?php echo $deskripsi; ?>" /></td>
+		</tr>
+		<tr>
+			<td>Tanggal Mulai</td>
+			<td><input type="text" name="tgl_mulai" value="<?php echo $tgl_mulai ?>" /></td>
+		</tr>
+		<tr>
+			<td>Tanggal Selesai</td>
+			<td><input type="text" name="tgl_akhir" value="<?php echo $tgl_akhir; ?>" /></td>
+		</tr>
+		<tr>
+			<td>Gratis</td>
+			<td><input type="text" name="is_free" value="<?php echo $is_free; ?>" /></td>
+		</tr>
+		<tr>
+			<td>Stasiun</td>
+			<td><input type="text" name="is_stasiun" value="<?php echo $is_stasiun; ?>" /></td>		
+		</tr>
+		<tr>
+			<td></td>
+			<td cols="3"><input class="button" type="submit" name="btnSubmit" value="SUBMIT" /></td>
+		</tr>
+	</table>
+	</form>
+
 
                                                 </div>
                                             </div>
@@ -107,7 +123,6 @@
         </div>
  
     </section>
-
     <footer>
         <div class="main">
         	<div class="container_12">
@@ -119,9 +134,5 @@
             </div>
         </div>
     </footer>
-	<script type="text/javascript">
-	$(document).ready(function(){
-        $('#tabel_acara').DataTable();
-    }); </script>
 </body>
 </html>
