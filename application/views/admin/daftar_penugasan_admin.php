@@ -47,7 +47,7 @@
 			</li>
 			<li><a href="<?php echo base_url()."dbs/daftar_peminjaman_admin";?>">Daftar Peminjaman</a></li>
 			<li><a href="<?php echo base_url()."dbs/daftar_laporan_admin";?>">Daftar Laporan</a></li>
-			<li><a href="#">Logout</a></li>
+			<li><a href="<?php echo base_url('dbs/logout'); ?>">Logout</a>>Logout</a></li>
 		</ul>
 	</div>
 </header>
@@ -71,19 +71,20 @@
 														<tr style="background:grey;">
 															<th>Petugas</th>
 															<th>Tanggal Mulai</th>
+															<th>Tanggal Akhir</th>
 															<th>Stasiun</th>
-															<th>Tanggal Selesai</th>
 															<th>Action</th>
 														</tr>
 													</thead>
 														<tbody>
 														<?php
+															// print_r($data);die;
 															foreach ($data as $col){?>
 														<tr>
-															<td><?php echo $col['ktp'];?></td>
+															<td><?php echo $col['ktp'];?> - <?php echo $col['nama'];?></td>
 															<td><?php echo $col['start_datetime'];?></td>
-															<td><?php echo $col['id_stasiun'];?></td>
 															<td><?php echo $col['end_datetime'];?></td>
+															<td><?php echo $col['id_stasiun'];?> - <?php echo $col['namasta'];?></td>
 															<td align="center">
 																<a href="<?php echo base_url()."dbs/edit_data_penugasan/".$col['ktp']; ?>">Update</a> ||
 																<a href="<?php echo base_url()."dbs/do_delete_penugasan/".$col['ktp']; ?>">Delete</a>

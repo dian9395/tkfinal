@@ -12,20 +12,21 @@ class Dbs extends CI_Controller {
 	public function add_data_penugasan()
 	{
 		// ambil data petugas
-		$this->load->view('form_add_penugasan');
+		$data=$this->mymodel->GetNama();		
+		$this->load->view('form_add_penugasan',array('data' =>$data));
 	}
 
 	public function do_insert_penugasan()
 	{
 		$ktp = $_POST['ktp'];
 		$start_datetime = $_POST['start_datetime'];
-		$id_stasiun = $_POST['id_stasiun'];
 		$end_datetime = $_POST['end_datetime'];
+		$id_stasiun = $_POST['id_stasiun'];		
 		$data_insert = array(
 			'ktp' => $ktp,
 			'start_datetime' => $start_datetime,
-			'id_stasiun' => $id_stasiun,
-			'end_datetime' => $end_datetime
+			'end_datetime' => $end_datetime,
+			'id_stasiun' => $id_stasiun			
 		);
 		$res = $this->mymodel->InsertData('penugasan',$data_insert);
 		if($res>=1){

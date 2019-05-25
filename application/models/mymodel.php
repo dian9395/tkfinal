@@ -23,12 +23,17 @@ class Mymodel extends CI_Model {
 	}
 
 	public function GetPenugasan($where=""){
-		$data = $this->db->query('select * from penugasan '.$where);
+		$data = $this->db->query('
+			SELECT pen.ktp, pen.start_datetime, pen.id_stasiun, pen.end_datetime, per.nama, sta.nama AS namasta 
+			FROM penugasan pen 
+			JOIN person per ON pen.ktp = per.ktp 
+			JOIN stasiun sta ON sta.id_stasiun = pen.id_stasiun 
+			ORDER BY pen.ktp');
 		return $data->result_array();
 	}
 
 	public function GetAcara($where=""){
-		$data = $this->db->query('select * from acara'.$where);
+		$data = $this->db->query('select * from acara '.$where);
 		return $data->result_array();
 	}
 	
@@ -51,6 +56,10 @@ class Mymodel extends CI_Model {
 		return $this->db->get_where($table,$where);
 	}	
 	
+	function GetNama(){
+		$data = $this->db->query('SELECT * FROM `person` INNER JOIN petugas WHERE person.ktp = petugas.ktp');
+		return $data->result_array();
+	}
 }
 ?>
 

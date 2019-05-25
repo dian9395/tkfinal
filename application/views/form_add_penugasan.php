@@ -81,19 +81,25 @@ $("document").ready(function(){
 	<table>
 		<tr>
 			<td>Petugas</td>
-			<td><input type="text" size="50" maxlength="50" name="ktp" /></td>
+			<td>
+				<select>
+					<?php foreach($data as $d) {?>
+						<option value="<?php echo $d['ktp']?>"><?php echo $d['ktp'] ?> - <?php echo $d['nama'] ?></option>
+					<?php } ?>
+				</select>
+			</td>
 		</tr>
 		<tr>
 			<td>Tanggal Mulai</td>
 			<td><input id="datepicker" type="text" size="50" maxlength="50" name="start_datetime"/></td>
 		</tr>
 		<tr>
-			<td>Stasiun</td>
-			<td><input type="text" size="50" maxlength="50" name="id_stasiun" /></td>
-		</tr>
-		<tr>
 			<td>Tanggal Selesai</td>
 			<td><input id="datepicker1" type="text" size="50" maxlength="50" name="end_datetime"/></td>
+		</tr>
+		<tr>
+			<td>Stasiun</td>
+			<td><input type="text" size="50" maxlength="50" name="id_stasiun" /></td>
 		</tr>
 		<tr>
 			<td></td>
