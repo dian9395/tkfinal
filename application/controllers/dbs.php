@@ -237,8 +237,10 @@ class Dbs extends CI_Controller {
 			echo "Username dan password salah. Silakan ke halaman sebelumnya dan ulangi.";
 		}
 	}
-	public function admin (){
-		$this->load->view('v_admin');
+
+	function logout(){
+		$this->session->sess_destroy();
+		redirect(base_url('dbs/index'));
 	}
 
 	public function pendaftaran (){
