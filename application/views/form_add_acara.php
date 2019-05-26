@@ -55,7 +55,7 @@ $("document").ready(function(){
 			</li>
 			<li><a href="#">Daftar Peminjaman</a></li>
 			<li><a href="#">Daftar Laporan</a></li>
-			<li><a href="#">Logout</a></li>
+			<li><a href="<?php echo base_url('dbs/logout'); ?>">Logout</a>>Logout</a></li>
 			
 		</ul>
  
@@ -81,27 +81,27 @@ $("document").ready(function(){
 	<table>
 		<tr>
 			<td>Judul</td>
-			<td><input type="text" name="judul" /></td>
+			<td><input type="text" size="40" maxlength="40" name="judul" /></td>
 		</tr>
 		<tr>
 			<td>Deskripsi</td>
-			<td><input type="text" name="deskripsi" /></td>
-		</tr>
-		<tr>
-			<td>Tanggal Mulai</td>
-			<td><input id="datepicker" type="text" size="50" maxlength="50" name="tgl_mulai"/></td>
-		</tr>
-		<tr>
-			<td>Tanggal Selesai</td>
-			<td><input id="datepicker1" type="text" size="50" maxlength="50" name="tgl_akhir"/></td>
+			<td><input type="text" size="40" maxlength="40" name="deskripsi" /></td>
 		</tr>
 		<tr>
 			<td>Gratis</td>
-			<td><input type="text" name="is_free" /></td>
+			<td><input type="text" size="40" maxlength="40" name="is_free" /></td>
+		</tr>
+		<tr>
+			<td>Tanggal Mulai</td>
+			<td><input id="datepicker" type="text" size="40" maxlength="40" name="tgl_mulai"/></td>
+		</tr>
+		<tr>
+			<td>Tanggal Selesai</td>
+			<td><input id="datepicker1" type="text" size="40" maxlength="40" name="tgl_akhir"/></td>
 		</tr>
 		<tr>
 			<td>Stasiun</td>
-			<td><input type="text" name="id_stasiun" /></td>
+			<td><input type="text" size="40" maxlength="40" name="id_stasiun" /></td>
 		</tr>
 		<tr>
 			<td></td>

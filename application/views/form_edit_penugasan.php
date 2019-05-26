@@ -6,13 +6,13 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/grid.css')?>" type="text/css" media="screen">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/dropdown.css')?>" type="text/css" media="screen"> 
     <link type="text/css" href="<?php echo base_url('assets/jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet"/>  	
-	<script type="text/javascript" href="<?php echo base_url('assets/js/jquery-2.1.1.min.js')?>"</script>  
-	<script type="text/javascript" href="<?php echo base_url('assets/jquery-ui-1.11.2/jquery-ui.js')?>"</script>  
-	<script type="text/javascript" href="<?php echo base_url('assets/js/jquery.ui.datepicker-id.js')?>"</script>  
+	<script src="<?php echo base_url('assets/datepick/datepick.js')?>"></script>
+	<script src="<?php echo base_url('assets/datepick/datepickui.js')?>"></script>
+
 <script type="text/javascript"> 
 $("document").ready(function(){ 
-$("#tanggal").datepicker();
-
+		$("#datepicker").datepicker();
+		$("#datepicker1").datepicker();
 }); 
 </script> 
 </head>
@@ -55,7 +55,7 @@ $("#tanggal").datepicker();
 			</li>
 			<li><a href="#">Daftar Peminjaman</a></li>
 			<li><a href="#">Daftar Laporan</a></li>
-			<li><a href="#">Logout</a></li>
+			<li><a href="<?php echo base_url('dbs/logout'); ?>">Logout</a>>Logout</a></li>
 			
 		</ul>
  
@@ -85,19 +85,25 @@ $("#tanggal").datepicker();
 		</tr>
 		<tr>
 			<td>Tanggal Mulai</td>
-			<td><input type="text" name="start_datetime" value="<?php echo $start_datetime; ?>" /></td>
+			<td><input id ="datepicker" type="text" name="start_datetime" value="<?php echo $start_datetime; ?>" /></td>
+		</tr>
+		<tr>
+			<td>Tanggal Selesai</td>
+			<td><input id="datepicker1" type="text" name="end_datetime" value="<?php echo $end_datetime; ?>" /></td>
 		</tr>
 		<tr>
 			<td>Stasiun</td>
 			<td><input type="text" name="id_stasiun" value="<?php echo $id_stasiun; ?>" /></td>
-		</tr>
-		<tr>
-			<td>Tanggal Selesai</td>
-			<td><input type="text" name="end_datetime value="<?php echo $end_datetime; ?>" /></td>
+			<td>
+				<select name="id_stasiun">
+					<?php foreach($data as $d) {?>
+						<option value="<?php echo $d['id_stasiun']?>"><?php echo $d['id_stasiun'] ?> - <?php echo $d['namasta'] ?></option>
+					<?php } ?>
+				</select></td>
 		</tr>
 		<tr>
 			<td></td>
-			<td cols="3"><input type="submit" name="btnSubmit" value="SUBMIT" /></td>
+			<td cols="3"><input class="button" type="submit" name="btnSubmit" value="SUBMIT" /></td>
 		</tr>
 	</table>
 	</form>

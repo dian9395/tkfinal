@@ -55,7 +55,7 @@ $("document").ready(function(){
 			</li>
 			<li><a href="#">Daftar Peminjaman</a></li>
 			<li><a href="#">Daftar Laporan</a></li>
-			<li><a href="#">Logout</a></li>
+			<li><a href="<?php echo base_url('dbs/logout'); ?>">Logout</a>>Logout</a></li>
 			
 		</ul>
  
@@ -82,7 +82,7 @@ $("document").ready(function(){
 		<tr>
 			<td>Petugas</td>
 			<td>
-				<select>
+				<select name="ktp">
 					<?php foreach($data as $d) {?>
 						<option value="<?php echo $d['ktp']?>"><?php echo $d['ktp'] ?> - <?php echo $d['nama'] ?></option>
 					<?php } ?>
@@ -91,19 +91,24 @@ $("document").ready(function(){
 		</tr>
 		<tr>
 			<td>Tanggal Mulai</td>
-			<td><input id="datepicker" type="text" size="50" maxlength="50" name="start_datetime"/></td>
+			<td><input id="datepicker" type="text" size="40" maxlength="40" name="start_datetime"/></td>
 		</tr>
 		<tr>
 			<td>Tanggal Selesai</td>
-			<td><input id="datepicker1" type="text" size="50" maxlength="50" name="end_datetime"/></td>
+			<td><input id="datepicker1" type="text" size="40" maxlength="40" name="end_datetime"/></td>
 		</tr>
 		<tr>
 			<td>Stasiun</td>
-			<td><input type="text" size="50" maxlength="50" name="id_stasiun" /></td>
+			<td>
+				<select name="id_stasiun">
+					<?php foreach($d1 as $d1) {?>
+						<option value="<?php echo $d1['id_stasiun']?>"><?php echo $d1['id_stasiun'] ?> - <?php echo $d1['nama'] ?></option>
+					<?php } ?>
+				</select></td>
 		</tr>
 		<tr>
 			<td></td>
-			<td cols="3"><input type="submit" name="btnSubmit" value="SUBMIT" /></td>
+			<td cols="3"><input class="button" type="submit" name="btnSubmit" value="SUBMIT" /></td>
 		</tr>
 	</table>
 	</form>

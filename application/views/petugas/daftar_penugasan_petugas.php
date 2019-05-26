@@ -25,7 +25,7 @@
 			<li><a href="<?php echo base_url()."dbs/daftar_laporan_petugas";?>">Daftar Laporan</a></li>
 			<li><a href="#">Daftar Peminjaman</a></li>
 			<li><a href="#">Daftar Voucher</a></li>
-			<li><a href="#">Logout</a></li>			
+			<li><a href="<?php echo base_url('dbs/logout'); ?>">Logout</a>>Logout</a></li>			
 		</ul>
 	</div>
 </header>
@@ -56,10 +56,10 @@
 														<?php
 															foreach ($data as $col){?>
 														<tr>
-															<td><?php echo $col['ktp'];?></td>
+															<td><?php echo $col['ktp'];?> - <?php echo $col['nama'];?></td>
 															<td><?php echo $col['start_datetime'];?></td>
 															<td><?php echo $col['end_datetime'];?></td>
-															<td><?php echo $col['id_stasiun'];?></td>
+															<td><?php echo $col['id_stasiun'];?> - <?php echo $col['namasta'];?></td>
 														</tr>
 														<?php }	?>
 														</tbody>
