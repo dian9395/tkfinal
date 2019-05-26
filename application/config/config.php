@@ -36,7 +36,7 @@ $config['base_url'] = 'https://github.com/dian9395/tkfinal';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------
