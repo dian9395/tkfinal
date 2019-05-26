@@ -64,8 +64,8 @@ $("#tanggal").datepicker();
 
                   
 <table>
-<form name="register" id="contact-form" method="post" action=action="<?php echo base_url()."index.php/dbs/topup_sbp";?>" enctype="multipart/form-data" onSubmit="return valregister()">
-<fieldset><br></br>
+<form name="register" id="contact-form" method="post" action="<?php echo base_url()."dbs/do_topup";?>" enctype="multipart/form-data" onSubmit="return valregister()">
+<fieldset><br>
 
 
 <tr> 

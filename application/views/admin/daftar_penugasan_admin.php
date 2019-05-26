@@ -67,7 +67,7 @@
                                                 	<h3 class="p2">Halaman Admin - Daftar Penugasan</h3>
                                                 	<?php echo "<h2>".$this->session->flashdata('pesan')."</h2>" ?>
 													<table id="tabel_penugasan" class="display" cellspacing="0" width="100%">
-													<thead><th>
+													<thead>
 														<tr style="background:grey;">
 															<th>Petugas</th>
 															<th>Tanggal Mulai</th>

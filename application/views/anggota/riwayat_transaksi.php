@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>TOP UP SALDO</title>
+    <title>Riwayat Transaksi</title>
     <link rel="stylesheet" href="<?php echo base_url('assets/css/reset.css')?>" type="text/css" media="screen">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css')?>" type="text/css" media="screen">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/grid.css')?>" type="text/css" media="screen">
