@@ -37,6 +37,46 @@ class Dbs extends CI_Controller {
 		}
 	}
 
+	public function do_topup()
+	{
+		$nominal = $_POST['nominal'];	
+		$no_kartu_anggota = $_POST['no_kartu_anggota'];	
+		$date_time = $_POST['date_time '];
+		$jenis= $_POST['jenis'];			
+		$data_insert = array(
+			'nominal'=>$nominal,
+			//'no_kartu_anggota'=>$no_kartu_anggota,
+			//'date_time '=>$date_time,
+			//'jenis'=>$jenis			
+		);
+		$res = $this->mymodel->InsertData('transaksi',$data_insert);
+		if($res>=1){
+			$this->session->set_flashdata('pesan','Tambah Data Sukses!!');
+			redirect('dbs/riwayat_transaksi');
+		}else{
+			echo "<h2>Insert Data Gagal</h2>";
+		}
+	}
+
+	public function topup_sbp() {
+		$nom=$_POST['nominal'];
+		$data_insert=array(
+			'nominal'=>$nom,
+		);
+		$res=$this->mymodel->InsertData('transaksi', $data_insert);
+		if($res>=1){
+			$this->session->set_flashdata('pesan','Tambah Data Sukses');
+			redirect('dbs/index');
+			//echo "<h2>Insert data sukses</h2>";
+		}
+		else {
+			echo "<h2>Insert data gagal</h2>";
+		}
+		/*echo "<pre>";
+		print_r($_POST);
+		echo "<pre>";*/
+	}
+
 	public function edit_data_penugasan($ktp){
 		$png = $this->mymodel->GetPenugasan("where ktp = '$ktp'");
 		$data = array(
@@ -142,25 +182,6 @@ class Dbs extends CI_Controller {
 		}
 	}
 
-	public function topup_sbp() {
-		$nom=$_POST['nominal'];
-		$data_insert=array(
-			'nominal'=>$nom,
-		);
-		$res=$this->mymodel->InsertData('transaksi', $data_insert);
-		if($res>=1){
-			$this->session->set_flashdata('pesan','Tambah Data Sukses');
-			redirect('dbs/index');
-			//echo "<h2>Insert data sukses</h2>";
-		}
-		else {
-			echo "<h2>Insert data gagal</h2>";
-		}
-		/*echo "<pre>";
-		print_r($_POST);
-		echo "<pre>";*/
-	}
-
 	public function acara(){
 		$this->load->view('acara.php');
 	}
@@ -219,11 +240,7 @@ class Dbs extends CI_Controller {
 		$this->load->view('login');
 	}
 	
-	public function vlogin (){
-		$this->load->view('v_login');
-	}
-
-	function aksi_login(){
+	public function aksi_login(){
 		$username = $this->input->post('noktp');
 		$password = $this->input->post('email');
 		$where = array(
@@ -231,33 +248,66 @@ class Dbs extends CI_Controller {
 			'email' =>$password
 			);
 		$cek = $this->mymodel->cek_login("person",$where)->num_rows();
-		if($cek > 0){
+		if($cek == 1){
 
 			$data_session = array(
-				'nama' => $username,
-				'status' => "login"
+				'ktp' => $username,
 				);
-
+			
+			/*$role1 = $this->mymodel->CekRole($username);
+			$role2 = $this->mymodel->CekRole($username);*/
 			$this->session->set_userdata($data_session);
 
-			redirect(base_url("dbs/daftar_peminjaman_admin"));
+			/*if ($role=='anggota'){
+				redirect('dbs/daftar_sepeda_anggota');
+			}*/
+			//print_r($role);die;
+			//else 
+			/*if ($role1=='petugas'){
+				redirect('dbs/daftar_penugasan_petugas');
+			}
+			else */ //if ($role2=='anggota'){
+				redirect('dbs/daftar_sepeda_anggota');
+			}
 
-		}else{
+
+		else{
 			echo "Username dan password salah. Silakan ke halaman sebelumnya dan ulangi.";
+		
 		}
 	}
 
 	function logout(){
 		$this->session->sess_destroy();
-		redirect(base_url('dbs/index'));
+		redirect('dbs/index');
 	}
 
 	public function pendaftaran (){
 		$this->load->view('pendaftaran.php');
 	}
 
-	public function penugasan (){
-		$this->load->view('penugasan.php');
+	public function do_pendaftaran (){
+		$ktp = $_POST['ktp'];
+		$nama = $_POST['nama'];
+		$email = $_POST['email'];		
+		$tgl_lahir = $_POST['tgl_lahir'];	
+		$no_telp = $_POST['no_telp'];	
+		$alamat= $_POST['alamat'];	
+		$data_insert = array(
+			'ktp' => $ktp,
+			'nama' => $nama,
+			'email' => $email,
+			'tgl_lahir' => $tgl_lahir,
+			'no_telp' => $no_telp,
+			'alamat' => $alamat
+		);
+		$res = $this->mymodel->InsertData('person',$data_insert);
+		if($res>=1){
+			$this->session->set_flashdata('pesan','Registrasi berhasil!', $nama);
+			redirect('dbs/daftar_peminjaman_admin');
+		}else{
+			echo "<h2>Insert Data Gagal</h2>";
+		}
 	}
 
 	public function riwayat_transaksi(){
@@ -266,7 +316,7 @@ class Dbs extends CI_Controller {
 	}
 
 	public function topup(){
-		$this->load->view('topup.php');
+		$this->load->view('anggota/topup.php');
 	}
 
 	public function update_acara(){
@@ -275,10 +325,6 @@ class Dbs extends CI_Controller {
 
 	public function update_penugasan(){
 		$this->load->view('update_acara.php');
-	}
-
-	public function dt(){
-		$this->load->view('cobadataTable.php');
 	}
 
 }

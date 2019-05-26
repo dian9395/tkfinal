@@ -32,6 +32,24 @@ class Mymodel extends CI_Model {
 		return $data->result_array();
 	}
 
+	public function CekRole($ktp){
+		$data1 = $this->db->query('SELECT "'.$ktp.'" FROM person WHERE "'.$ktp.'" IN (SELECT "'.$ktp.'" FROM anggota);');
+		$cek1 = $data1->num_rows();
+		$data2 = $this->db->query('SELECT "'.$ktp.'" FROM person WHERE "'.$ktp.'" IN (SELECT "'.$ktp.'" FROM petugas);');
+		$cek2 = $data2->num_rows();
+		/*print_r($cek1);
+		print('/n');
+		print_r($cek2);*/
+		
+		if ($cek1==1) {
+			return 'anggota';
+		} else if ($cek2==1) {
+			return 'petugas';
+		} else 
+			return 0;
+		
+	}
+
 	public function GetAcara($where=""){
 		$data = $this->db->query('select * from acara '.$where);
 		return $data->result_array();

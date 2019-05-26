@@ -5,14 +5,14 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css')?>" type="text/css" media="screen">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/grid.css')?>" type="text/css" media="screen">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/dropdown.css')?>" type="text/css" media="screen"> 
-    <link type="text/css" href="jquery-ui-1.11.2/jquery-ui.css" rel="stylesheet"/>  	
-	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>  
-	<script type="text/javascript" src="jquery-ui-1.11.2/jquery-ui.js"></script>  
-	<script type="text/javascript" src="js/jquery.ui.datepicker-id.js"></script>  
+    <link type="text/css" href="<?php echo base_url('assets/jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet"/>  	
+	<script src="<?php echo base_url('assets/datepick/datepick.js')?>"></script>
+	<script src="<?php echo base_url('assets/datepick/datepickui.js')?>"></script>
+
 <script type="text/javascript"> 
 $("document").ready(function(){ 
-$("#tanggal").datepicker();
-$("#tanggal2").datepicker();
+		$("#datepicker").datepicker();
+		$("#datepicker1").datepicker();
 }); 
 </script> 
 
@@ -37,42 +37,42 @@ $("#tanggal2").datepicker();
 
                   
 <table>
-<form name="register" id="contact-form" method="post" action="" enctype="multipart/form-data" onSubmit="return valregister()">
-<fieldset><br></br>
+<form name="register" id="contact-form" method="post" action="<?php echo base_url()."dbs/do_pendaftaran"; ?>" enctype="multipart/form-data" onSubmit="return valregister()">
+<fieldset><br>
 <tr> 
 	<td> <b>No KTP</b> </td>
 	<td> : </td>
-	<td> <input type="text" size="60" maxlength="60" name="isinama"></td>
+	<td> <input type="text" size="60" maxlength="60" name="ktp"></td>
 </tr>
 
 <tr> 
 	<td> <b>Nama Lengkap</b> </td>
 	<td> : </td>
-	<td> <input type="text" size="60" maxlength="60" name="isinama"></td>
+	<td> <input type="text" size="60" maxlength="60" name="nama"></td>
 </tr>
 
 <tr> 
 	<td> <b>Email</b> </td>
 	<td> : </td>
-	<td> <input type="text" size="60" maxlength="60" name="isiemail"></td>
+	<td> <input type="text" size="60" maxlength="60" name="email"></td>
 </tr>
 
 <tr> 
 	<td> <b>Tanggal Lahir<b> </td>
 	<td> : </td>
-	<td>  <input id="tanggal" type="text" size="60" maxlength="60">  </td>
+	<td>  <input id="datepicker" type="text" size="60" maxlength="60" name="tgl_lahir">  </td>
 </tr>
 
 <tr> 
 	<td> <b>Nomor Telepon<b> </td>
 	<td> : </td>
-	<td> <input type="text" size="60" maxlength="60" name="notelpon"></td>
+	<td> <input type="text" size="60" maxlength="60" name="no_telp"></td>
 </tr>
 
 <tr> 
 	<td> <b>Alamat<b> </td>
 	<td> : </td>
-	<td> <textarea cols="62" rows="4" name="isialamat">
+	<td> <textarea cols="62" rows="4" name="alamat">
 	</textarea></td>
 </tr>
 
