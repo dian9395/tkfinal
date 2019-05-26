@@ -70,12 +70,22 @@ class Mymodel extends CI_Model {
 		return $res;
 	}
 
-	function cek_login($table,$where){		
+	public function cek_login($table,$where){		
 		return $this->db->get_where($table,$where);
 	}	
 	
-	function GetNama(){
-		$data = $this->db->query('SELECT * FROM `person` INNER JOIN petugas WHERE person.ktp = petugas.ktp');
+	// public function GetNama(){
+	// 	$data = $this->db->query('SELECT * FROM `person` INNER JOIN petugas WHERE person.ktp = petugas.ktp');
+	// 	return $data->result_array();
+	// }
+
+	public function GetNama(){
+		$data = $this->db->query('SELECT * FROM person, petugas WHERE person.ktp = petugas.ktp');
+		return $data->result_array();
+	}
+
+	public function GetIdstasiun(){
+		$data = $this->db->query('SELECT id_stasiun, nama FROM stasiun');
 		return $data->result_array();
 	}
 }

@@ -12,8 +12,9 @@ class Dbs extends CI_Controller {
 	public function add_data_penugasan()
 	{
 		// ambil data petugas
-		$data=$this->mymodel->GetNama();		
-		$this->load->view('form_add_penugasan',array('data' =>$data));
+		$data=$this->mymodel->GetNama();
+		$d1=$this->mymodel->GetIdstasiun();		
+		$this->load->view('form_add_penugasan',array('data' =>$data, 'd1' => $d1));
 	}
 
 	public function do_insert_penugasan()
@@ -78,6 +79,8 @@ class Dbs extends CI_Controller {
 	}
 
 	public function edit_data_penugasan($ktp){
+		$data=$this->mymodel->GetNama();
+		$data=$this->mymodel->GetIdstasiun();
 		$png = $this->mymodel->GetPenugasan("where ktp = '$ktp'");
 		$data = array(
 			"ktp" => $png[0]['ktp'],
@@ -101,6 +104,7 @@ class Dbs extends CI_Controller {
 		$where =  array('ktp' => $ktp);
 		$res = $this->mymodel->UpdateData('penugasan',$data_update,$where);
 		if($res>=1){
+			$this->session->set_flashdata('pesan','Update Data Sukses!!');
 			redirect('dbs/daftar_penugasan_admin');
 		}
 	}
@@ -109,6 +113,7 @@ class Dbs extends CI_Controller {
 		$where = array('ktp' => $ktp);
 		$res = $this->mymodel->DeleteData('penugasan',$where);
 		if($res>=1){
+			$this->session->set_flashdata('pesan','Delete Data Sukses!!');
 			redirect('dbs/daftar_penugasan_admin');
 		}
 	}
@@ -122,16 +127,16 @@ class Dbs extends CI_Controller {
 	{
 		$judul = $_POST['judul'];
 		$deskripsi = $_POST['deskripsi'];
+		$is_free = $_POST['is_free'];
 		$tgl_mulai = $_POST['tgl_mulai'];
 		$tgl_akhir = $_POST['tgl_akhir'];
-		$is_free = $_POST['is_free'];
 		$id_stasiun = $_POST['id_stasiun'];
 		$data_insert = array(
 			'judul' => $judul,
 			'deskripsi' => $deskripsi,
+			'is_free' => $is_free,
 			'tgl_mulai' => $tgl_mulai,
 			'tgl_akhir' => $tgl_akhir,
-			'is_free' => $is_free,
 			'id_stasiun' => $id_stasiun,
 		);
 		$res = $this->mymodel->InsertData('acara',$data_insert);
@@ -170,6 +175,7 @@ class Dbs extends CI_Controller {
 		$where =  array('judul' => $judul);
 		$res = $this->mymodel->UpdateData('acara',$data_update,$where);
 		if($res>=1){
+			$this->session->set_flashdata('pesan','Update Data Sukses!!');
 			redirect('dbs/daftar_penugasan_acara');
 		}
 	}
@@ -178,6 +184,7 @@ class Dbs extends CI_Controller {
 		$where = array('judul' => $judul);
 		$res = $this->mymodel->DeleteData('acara',$where);
 		if($res>=1){
+			$this->session->set_flashdata('pesan','Delete Data Sukses!!');
 			redirect('dbs/daftar_acara_admin');
 		}
 	}

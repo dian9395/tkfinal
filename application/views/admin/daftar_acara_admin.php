@@ -47,7 +47,7 @@
 			</li>
 			<li><a href="<?php echo base_url()."dbs/daftar_peminjaman_admin";?>">Daftar Peminjaman</a></li>
 			<li><a href="<?php echo base_url()."dbs/daftar_laporan_admin";?>">Daftar Laporan</a></li>
-			<li><a href="#">Logout</a></li>
+			<li><a href="<?php echo base_url('dbs/logout'); ?>">Logout</a>>Logout</a></li>
 		</ul>
 	</div>
 </header>
@@ -87,8 +87,8 @@
 															<td><?php echo $col['tgl_akhir'];?></td>
 															<td><?php echo $col['is_free'];?></td>	
 															<td align="center">
-																<a href="<?php echo base_url()."dbs/daftar_acara_admin/edit_data_acara/".$col['judul']; ?>">Update</a> ||
-																<a href="<?php echo base_url()."dbs/daftar_acara_admin/do_delete_acara/".$col['judul']; ?>">Delete</a>
+																<a href="<?php echo base_url()."dbs/edit_data_acara/".$col['judul']; ?>">Update</a> ||
+																<a href="<?php echo base_url()."dbs/do_delete_acara/".$col['judul']; ?>" onclick="return confirm('Apakah benar ingin menghapus penugasan tersebut?');">Delete</a>
 															</td>				
 														</tr>
 														<?php }	?>

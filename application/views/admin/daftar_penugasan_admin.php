@@ -87,7 +87,7 @@
 															<td><?php echo $col['id_stasiun'];?> - <?php echo $col['namasta'];?></td>
 															<td align="center">
 																<a href="<?php echo base_url()."dbs/edit_data_penugasan/".$col['ktp']; ?>">Update</a> ||
-																<a href="<?php echo base_url()."dbs/do_delete_penugasan/".$col['ktp']; ?>">Delete</a>
+																<a href="<?php echo base_url()."dbs/do_delete_penugasan/".$col['ktp']; ?>" onclick="return confirm('Apakah benar ingin menghapus penugasan tersebut?');">Delete</a>
 															</td>				
 														</tr>
 														<?php }	?>
