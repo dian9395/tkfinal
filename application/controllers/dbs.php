@@ -39,14 +39,12 @@ class Dbs extends CI_Controller {
 	}
 
 	public function edit_data_penugasan($ktp){
-		$data=$this->mymodel->GetNama();
-		$data=$this->mymodel->GetIdstasiun();
-		$png = $this->mymodel->GetPenugasan("where ktp = '$ktp'");
+		$png = $this->mymodel->GetEditpen("where ktp = '$ktp'");
 		$data = array(
 			"ktp" => $png[0]['ktp'],
 			"start_datetime" => $png[0]['start_datetime'],
-			"id_stasiun" => $png[0]['id_stasiun'],
 			"end_datetime" => $png[0]['end_datetime'],
+			"id_stasiun" => $png[0]['id_stasiun'],
 		);
 		$this->load->view('form_edit_penugasan',$data);
 	}
@@ -54,14 +52,13 @@ class Dbs extends CI_Controller {
 	public function do_update_penugasan(){
 		$ktp = $_POST['ktp'];
 		$start_datetime = $_POST['start_datetime'];
-		$id_stasiun = $_POST['id_stasiun'];
 		$end_datetime = $_POST['end_datetime'];
+		$id_stasiun = $_POST['id_stasiun'];
 		$data_update = array(
-			'start_datetime' => $start_datetime,
-			'id_stasiun' => $id_stasiun,
-			'end_datetime' => $end_datetime
+			'end_datetime' => $end_datetime,
+			'id_stasiun' => $id_stasiun
 		);
-		$where =  array('ktp' => $ktp);
+		$where = array('ktp' => $ktp, 'start_datetime' => $start_datetime);
 		$res = $this->mymodel->UpdateData('penugasan',$data_update,$where);
 		if($res>=1){
 			$this->session->set_flashdata('pesan','Update Data Sukses!!');
@@ -79,9 +76,22 @@ class Dbs extends CI_Controller {
 	}
  
 	public function add_data_acara()
-	{
+	{	
+		// $s=$this->mymodel->GetIdsta2();		
+		// $this->load->view('form_add_acara',array('data' =>$data, 's' => $s));
 		$this->load->view('form_add_acara');
+
 	}
+
+	function generateRandomString($length = 10) {
+		    $characters = '0123456789';
+		    $charactersLength = strlen($characters);
+		    $randomString = '';
+		    for ($i = 0; $i < $length; $i++) {
+		        $randomString .= $characters[rand(0, $charactersLength - 1)];
+		    }
+		    return $randomString;
+		}
 
 	public function do_insert_acara()
 	{
@@ -90,14 +100,16 @@ class Dbs extends CI_Controller {
 		$is_free = $_POST['is_free'];
 		$tgl_mulai = $_POST['tgl_mulai'];
 		$tgl_akhir = $_POST['tgl_akhir'];
-		$id_stasiun = $_POST['id_stasiun'];
+		// $id_stasiun = $_POST['id_stasiun'];
+		$randomString = $this->generateRandomString();
 		$data_insert = array(
+			'id_acara' => $randomString,
 			'judul' => $judul,
 			'deskripsi' => $deskripsi,
 			'is_free' => $is_free,
 			'tgl_mulai' => $tgl_mulai,
-			'tgl_akhir' => $tgl_akhir,
-			'id_stasiun' => $id_stasiun,
+			'tgl_akhir' => $tgl_akhir
+			// 'id_stasiun' => $id_stasiun,
 		);
 		$res = $this->mymodel->InsertData('acara',$data_insert);
 		if($res>=1){
@@ -108,14 +120,15 @@ class Dbs extends CI_Controller {
 		}
 	}
 
-	public function edit_data_acara($ktp){
+	public function edit_data_acara($judul){
 		$acr = $this->mymodel->GetAcara("where judul = '$judul'");
 		$data = array(
-			"judul" => $ktp[0]['ktp'],
-			"deskripsi" => $ktp[0]['deskripsi'],
-			"tgl_mulai" => $ktp[0]['tgl_mulai'],
-			"tgl_akhir" => $ktp[0]['tgl_akhir'],
-			"id_stasiun" => $ktp[0]['id_stasiun'],
+			"judul" => $acr[0]['judul'],
+			"deskripsi" => $acr[0]['deskripsi'],
+			"is_free" => $acr[0]['is_free'],
+			"tgl_mulai" => $acr[0]['tgl_mulai'],
+			"tgl_akhir" => $acr[0]['tgl_akhir'],
+			// "id_stasiun" => $acr[0]['id_stasiun'],
 			);
 		$this->load->view('form_edit_acara',$data);
 	}
@@ -123,20 +136,22 @@ class Dbs extends CI_Controller {
 	public function do_update_acara(){
 		$judul = $_POST['judul'];
 		$deskripsi = $_POST['deskripsi'];
+		$is_free = $_POST['is_free'];
 		$tgl_mulai = $_POST['tgl_mulai'];
 		$tgl_akhir= $_POST['tgl_akhir'];
-		$id_stasiun= $_POST['id_stasiun'];
+		// $id_stasiun= $_POST['id_stasiun'];
 		$data_update = array(
 			'deskripsi' => $deskripsi,
+			'is_free' => $is_free,
 			'tgl_mulai' => $tgl_mulai,
 			'tgl_akhir' => $tgl_akhir,
-			'id_stasiun' => $id_stasiun,
+			// 'id_stasiun' => $id_stasiun,
 		);
 		$where =  array('judul' => $judul);
 		$res = $this->mymodel->UpdateData('acara',$data_update,$where);
 		if($res>=1){
 			$this->session->set_flashdata('pesan','Update Data Sukses!!');
-			redirect('dbs/daftar_penugasan_acara');
+			redirect('dbs/daftar_acara_admin');
 		}
 	}
 

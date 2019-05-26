@@ -75,7 +75,14 @@
                                                             <td><?php echo $col['deskripsi'];?></td>
                                                             <td><?php echo $col['tgl_mulai'];?></td>
                                                             <td><?php echo $col['tgl_akhir'];?></td>
-                                                            <td><?php echo $col['is_free'];?></td>
+                                                            <td><?php
+                                                            if ($col['is_free'] == 1) {
+                                                                echo 'Ya';
+                                                            }
+                                                            else {
+                                                                echo 'Tidak';
+                                                            }
+                                                            ?></td> 
                                                         </tr>
                                                         <?php } ?>
                                                         </tbody>

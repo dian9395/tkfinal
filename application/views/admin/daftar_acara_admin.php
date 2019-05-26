@@ -85,7 +85,14 @@
 															<td><?php echo $col['deskripsi'];?></td>
 															<td><?php echo $col['tgl_mulai'];?></td>
 															<td><?php echo $col['tgl_akhir'];?></td>
-															<td><?php echo $col['is_free'];?></td>	
+															<td><?php
+															if ($col['is_free'] == 1) {
+																echo 'Ya';
+															}
+															else {
+																echo 'Tidak';
+															}
+															?></td>	
 															<td align="center">
 																<a href="<?php echo base_url()."dbs/edit_data_acara/".$col['judul']; ?>">Update</a> ||
 																<a href="<?php echo base_url()."dbs/do_delete_acara/".$col['judul']; ?>" onclick="return confirm('Apakah benar ingin menghapus penugasan tersebut?');">Delete</a>

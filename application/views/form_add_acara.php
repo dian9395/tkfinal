@@ -89,7 +89,11 @@ $("document").ready(function(){
 		</tr>
 		<tr>
 			<td>Gratis</td>
-			<td><input type="text" size="40" maxlength="40" name="is_free" /></td>
+			<td><select name="is_free">
+				  <option value="1">Ya</option>
+				  <option value="0">Tidak</option>
+				</select>
+			</td>
 		</tr>
 		<tr>
 			<td>Tanggal Mulai</td>
@@ -99,10 +103,10 @@ $("document").ready(function(){
 			<td>Tanggal Selesai</td>
 			<td><input id="datepicker1" type="text" size="40" maxlength="40" name="tgl_akhir"/></td>
 		</tr>
-		<tr>
+<!-- 		<tr>
 			<td>Stasiun</td>
 			<td><input type="text" size="40" maxlength="40" name="id_stasiun" /></td>
-		</tr>
+		</tr> -->
 		<tr>
 			<td></td>
 			<td cols="3"><input class="button" type="submit" name="btnSubmit" value="SUBMIT" /></td>

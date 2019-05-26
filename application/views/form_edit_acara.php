@@ -6,13 +6,13 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/grid.css')?>" type="text/css" media="screen">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/dropdown.css')?>" type="text/css" media="screen"> 
     <link type="text/css" href="<?php echo base_url('assets/jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet"/>  	
-	<script type="text/javascript" href="<?php echo base_url('assets/js/jquery-2.1.1.min.js')?>"</script>  
-	<script type="text/javascript" href="<?php echo base_url('assets/jquery-ui-1.11.2/jquery-ui.js')?>"</script>  
-	<script type="text/javascript" href="<?php echo base_url('assets/js/jquery.ui.datepicker-id.js')?>"</script>  
+	<script src="<?php echo base_url('assets/datepick/datepick.js')?>"></script>
+	<script src="<?php echo base_url('assets/datepick/datepickui.js')?>"></script>
+
 <script type="text/javascript"> 
 $("document").ready(function(){ 
-$("#tanggal").datepicker();
-
+		$("#datepicker").datepicker();
+		$("#datepicker1").datepicker();
 }); 
 </script> 
 </head>
@@ -77,7 +77,7 @@ $("#tanggal").datepicker();
                                                 	<h3 class="p2">Form Update Acara</h3>
 
 
-	<form method="POST" action="<?php echo base_url()."dbs/daftar_acara_admin/do_insert_acara"; ?>">
+	<form method="POST" action="<?php echo base_url()."dbs/do_update_acara"; ?>">
 	<table>
 		<tr>
 			<td>Judul</td>
@@ -88,22 +88,38 @@ $("#tanggal").datepicker();
 			<td><input type="text" name="deskripsi" value="<?php echo $deskripsi; ?>" /></td>
 		</tr>
 		<tr>
+			<td>Gratis</td>
+<!-- 			<td><input type="text" name="is_free" value="<?php echo $is_free; ?>" /></td> -->
+			<td>
+				<select name="is_free">
+					<option value="<?php echo $is_free; ?>" /></option>
+					<option value="1">Ya</option>
+				  	<option value="0">Tidak</option>
+				 </select>
+<!-- 
+					<?php foreach($data as $d) {?>
+						<option value="<?php echo $d['is_free']?>"><?php echo $d['is_free'] ?></option>
+					<?php } ?>
+				</select>
+
+				<select name=agama class='form-control'>
+                                           <option value='$r[agama]' selected>$r[agama]</option>
+                                           <option value='Islam'>Islam</option> -->
+			</td>
+		</tr>
+		<tr>
 			<td>Tanggal Mulai</td>
-			<td><input type="text" name="tgl_mulai" value="<?php echo $tgl_mulai ?>" /></td>
+			<td><input id ="datepicker" type="text" name="tgl_mulai" value="<?php echo $tgl_mulai ?>" /></td>
 		</tr>
 		<tr>
 			<td>Tanggal Selesai</td>
-			<td><input type="text" name="tgl_akhir" value="<?php echo $tgl_akhir; ?>" /></td>
+			<td><input id ="datepicker1" type="text" name="tgl_akhir" value="<?php echo $tgl_akhir; ?>" /></td>
 		</tr>
-		<tr>
-			<td>Gratis</td>
-			<td><input type="text" name="is_free" value="<?php echo $is_free; ?>" /></td>
-		</tr>
-		<tr>
+<!-- 		<tr>
 			<td>Stasiun</td>
 			<td><input type="text" name="is_stasiun" value="<?php echo $is_stasiun; ?>" /></td>		
 		</tr>
-		<tr>
+ -->		<tr>
 			<td></td>
 			<td cols="3"><input class="button" type="submit" name="btnSubmit" value="SUBMIT" /></td>
 		</tr>

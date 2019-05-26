@@ -70,6 +70,16 @@ class Mymodel extends CI_Model {
 		$data = $this->db->query('SELECT id_stasiun, nama FROM stasiun');
 		return $data->result_array();
 	}
+
+	public function GetEditpen($where=""){
+		$data = $this->db->query('SELECT * FROM penugasan '.$where);
+		return $data->result_array();
+	}
+
+	public function GetIdsta2(){
+		$data = $this->db->query('SELECT id_stasiun, nama FROM stasiun');
+		return $data->result_array();
+	}
 }
 ?>
 

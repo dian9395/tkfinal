@@ -77,15 +77,15 @@ $("document").ready(function(){
                                                 	<h3 class="p2">Form Update Penugasan</h3>
 
 
-	<form method="POST" action="<?php echo base_url()."dbs/do_insert_penugasan"; ?>">
+	<form method="POST" action="<?php echo base_url()."dbs/do_update_penugasan"; ?>">
 	<table>
 		<tr>
 			<td>Petugas</td>
-			<td><input type="text" name="ktp" value="<?php echo $ktp; ?>" /></td>
+			<td><input type="text" name="ktp" value="<?php echo $ktp; ?>" readonly /></td>
 		</tr>
 		<tr>
 			<td>Tanggal Mulai</td>
-			<td><input id ="datepicker" type="text" name="start_datetime" value="<?php echo $start_datetime; ?>" /></td>
+			<td><input id ="datepicker" type="text" name="start_datetime" value="<?php echo $start_datetime; ?>" readonly /></td>
 		</tr>
 		<tr>
 			<td>Tanggal Selesai</td>
@@ -94,16 +94,10 @@ $("document").ready(function(){
 		<tr>
 			<td>Stasiun</td>
 			<td><input type="text" name="id_stasiun" value="<?php echo $id_stasiun; ?>" /></td>
-			<td>
-				<select name="id_stasiun">
-					<?php foreach($data as $d) {?>
-						<option value="<?php echo $d['id_stasiun']?>"><?php echo $d['id_stasiun'] ?> - <?php echo $d['namasta'] ?></option>
-					<?php } ?>
-				</select></td>
 		</tr>
 		<tr>
 			<td></td>
-			<td cols="3"><input class="button" type="submit" name="btnSubmit" value="SUBMIT" /></td>
+			<td cols="3"><input class="button" type="submit" name="btnSubmit" value="UPDATE" /></td>
 		</tr>
 	</table>
 	</form>
