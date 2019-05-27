@@ -24,7 +24,7 @@ $("#tanggal").datepicker();
 	<div class="menu-kelompok1">
  
 		<ul>
-			<li><a href="#">Saldo Sharebike Pay:20000</a></li>
+			<li><a href="#">Saldo Sharebike Pay: <?php echo $this->session->userdata('saldo')?></a></li>
 			<li><a href="#">Daftar Stasiun</a></li>
 			<li><a href="#">Daftar Sepeda</a></li>
 			<li class="dropdown"><a href="#">Peminjaman</a>
@@ -41,7 +41,7 @@ $("#tanggal").datepicker();
 			</li>
 			<li><a href="#">Daftar Acara</a></li>
 			<li><a href="#">Daftar Voucher</a></li>
-			<li><a href="index">Logout</a></li>
+			<li><a href="<?php echo base_url()."dbs/logout"; ?>">Logout</a></li>
 			
 		</ul>
  
@@ -75,14 +75,14 @@ $("#tanggal").datepicker();
 	<td> <input type="text" size="60" maxlength="60" name="nominal"></td>
 </tr>
 
-
+<tr>
+	<td cols="3"> <input class="button" type="submit" name="tombol" value="SUBMIT"></a></td>
+</tr>  
 		
 </fieldset>		
 </form>
 </table> 
-<tr>
-	<td cols="3"> <input class="button" type="submit" name="tombol" value="SUBMIT"></a></td>
-</tr>                       
+                     
                                                        				
                                                  
                                                 </div>

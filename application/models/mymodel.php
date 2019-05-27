@@ -7,9 +7,24 @@ class Mymodel extends CI_Model {
 		return $data->result_array();
 	}
 
-	public function GetRiwayatTransaksi($where=""){
-		$data = $this->db->query('select * from transaksi'.$where);
+	public function Cek($ktp){
+		$q1 = $this->db->query('select * from petugas where ktp ='.$ktp);
+		$q2 = $this->db->query('select * from anggota where ktp ='.$ktp);
+
+		if ($q1->num_rows() > 0){
+			return 'petugas';
+		} else if ($q2->num_rows() > 0){
+			return 'anggota';
+		} else {
+			return NULL;
+		}
+	}
+
+	public function GetRiwayatTransaksi($ktp){
+		$data = $this->db->query('SELECT T.date_time, T.jenis, T.nominal FROM anggota A, transaksi T 
+		WHERE A.no_kartu=T.no_kartu_anggota AND A.ktp='.$ktp);
 		return $data->result_array();
+
 	}
 
 	public function GetLaporan($where=""){
@@ -37,6 +52,22 @@ class Mymodel extends CI_Model {
 		return $data->result_array();
 	}
 
+	public function GetNamaAnggota($ktp){
+		$data = $this->db->query('SELECT nama FROM person WHERE ktp='.$ktp);
+		return $data->result_array();
+	}
+
+	public function GetSaldo($ktp){
+		$data = $this->db->query('SELECT saldo FROM anggota WHERE ktp='.$ktp);
+		return $data->result_array();
+	}
+
+	public function GetNomorKartu($ktp){
+		$data = $this->db->query('SELECT no_kartu FROM anggota A, transaksi T, person P
+		WHERE A.no_kartu=T.no_kartu_anggota AND A.ktp=P.ktp');
+		return $data->result_array();
+	}
+
 	public function CekRole($ktp){
 		$data1 = $this->db->query('SELECT "'.$ktp.'" FROM person WHERE "'.$ktp.'" IN (SELECT "'.$ktp.'" FROM anggota);');
 		$cek1 = $data1->num_rows();
@@ -48,8 +79,10 @@ class Mymodel extends CI_Model {
 		
 		if ($cek1==1) {
 			return 'anggota';
-		} else if ($cek2==1) {
-			return 'petugas';
+		} else if ($cek1==0) {
+			if ($cek2==1){
+				return 'petugas';
+			}
 		} else 
 			return 0;
 		
@@ -63,6 +96,16 @@ class Mymodel extends CI_Model {
 	public function InsertData($tabelName,$data){
 		$res=$this->db->insert($tabelName,$data);
 		return $res;
+	}
+
+	public function CekKTP($where=""){
+		$data = $this->db->query('select ktp from person '.$where);
+		return $data;
+	}
+
+	public function CekEmail($where=""){
+		$data = $this->db->query('select email from person '.$where);
+		return $data;
 	}
 	
 	public function UpdateData($tabelName,$data,$where){

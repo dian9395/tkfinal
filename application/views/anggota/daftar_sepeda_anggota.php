@@ -19,7 +19,7 @@
 		<div class="menu-kelompok1">
  
 		<ul>
-			<li><a href="#">Saldo Sharebike Pay:20000</a></li>
+			<li><a href="#">Saldo Sharebike Pay: <?php echo $this->session->userdata('saldo')?></a></li>
 			<li><a href="#">Daftar Stasiun</a></li>
 			<li><a href="<?php echo base_url()."dbs/daftar_sepeda_anggota"; ?>">Daftar Sepeda</a></li>
 			<li class="dropdown"><a href="#">Peminjaman</a>
@@ -36,7 +36,7 @@
 			</li>
 			<li><a href="<?php echo base_url()."dbs/daftar_acara_anggota"; ?>">Daftar Acara</a></li>
 			<li><a href="#">Daftar Voucher</a></li>
-			<li><a href="index">Logout</a></li>
+			<li><a href="<?php echo base_url()."dbs/logout"; ?>">Logout</a></li>
 			
 		</ul>
  
@@ -57,9 +57,9 @@
                                         <div class="wrapper">
                                             <div class="grid_12">
                                             	<div class="indent-left">
-                                                	<h3 class="p2">Halaman Anggota - Daftar Sepeda</h3>
-						
+													<!-- <h3 class="p2"> <?php echo $this->session->userdata('nama')?></h3> -->
 													<?php echo "<h2>".$this->session->flashdata('pesan')."</h2>"?>
+													<h3 class="p2">Halaman Anggota - Daftar Sepeda</h3>
 													<table id="tabel_sepeda" class="display" cellspacing="0" width="100%">
 													<thead>
 														<tr style="background:grey;">

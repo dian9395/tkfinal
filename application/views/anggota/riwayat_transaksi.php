@@ -21,7 +21,7 @@
  
 		<ul>
 			
-			<li><a href="#">Saldo Sharebike Pay:20000</a></li>
+			<li><a href="#">Saldo Sharebike Pay: <?php echo $this->session->userdata('saldo')?></a></li>
 			<li><a href="#">Daftar Stasiun</a></li>
 			<li><a href="#">Daftar Sepeda</a></li>
 			<li class="dropdown"><a href="#">Peminjaman</a>
@@ -32,7 +32,7 @@
 			</li>
 			<li class="dropdown"><a href="#">Transaksi</a>
 				<ul class="isi-dropdown">
-					<li><a href="#">Topup Sharebike Pay</a></li>
+					<li><a href="<?php echo base_url()."dbs/topup"; ?>">Topup Sharebike Pay</a></li>
 					<li><a href="#">Riwayat Transaksi</a></li>
 				</ul>
 			</li>

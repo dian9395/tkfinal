@@ -40,15 +40,23 @@ $("document").ready(function(){
 <form name="register" id="contact-form" method="post" action="<?php echo base_url()."dbs/do_pendaftaran"; ?>" enctype="multipart/form-data" onSubmit="return valregister()">
 <fieldset><br>
 <tr> 
+	<!-- flash data -->
 	<td> <b>No KTP</b> </td>
 	<td> : </td>
 	<td> <input type="text" size="60" maxlength="60" name="ktp"></td>
 </tr>
+<?php echo "<h2>".$this->session->flashdata('pesan')."</h2>"?>
 
 <tr> 
 	<td> <b>Nama Lengkap</b> </td>
 	<td> : </td>
 	<td> <input type="text" size="60" maxlength="60" name="nama"></td>
+</tr>
+
+<tr> 
+	<td> <b>Role</b> </td>
+	<td> : </td>
+	<td> <input type="text" size="60" maxlength="60" name="role"></td>
 </tr>
 
 <tr> 

@@ -19,7 +19,7 @@
  
         <ul>
             
-            <li><a href="#">Saldo Sharebike Pay:20000</a></li>
+            <li><a href="#">Saldo Sharebike Pay: <?php echo $this->session->userdata('saldo')?></a></li>
             <li><a href="#">Daftar Stasiun</a></li>
             <li><a href="#">Daftar Sepeda</a></li>
             <li class="dropdown"><a href="#">Peminjaman</a>
