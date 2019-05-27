@@ -21,7 +21,7 @@
 		<ul>
 			<li><a href="#">Saldo Sharebike Pay:20000</a></li>
 			<li><a href="#">Daftar Stasiun</a></li>
-			<li><a href="#">Daftar Sepeda</a></li>
+			<li><a href="<?php echo base_url()."dbs/daftar_sepeda_anggota"; ?>">Daftar Sepeda</a></li>
 			<li class="dropdown"><a href="#">Peminjaman</a>
 				<ul class="isi-dropdown">
 					<li><a href="#">Buat Peminjaman</a></li>
@@ -80,7 +80,12 @@
 															<td><?php echo $col['nomor'];?></td>
 															<td><?php echo $col['merk'];?></td>
 															<td><?php echo $col['jenis'];?></td>
-															<td><?php echo $col['status'];?></td>
+															<td><?php if ($col['status'] == 1) {
+                                                                echo 'Dipinjam';
+                                                            }
+                                                            else {
+                                                                echo 'Tersedia';
+															};?></td>
 															<td><?php echo $col['id_stasiun'];?></td>
 															<td><?php echo $col['no_kartu_penyumbang'];?></td>
 															<td align="center">

@@ -9,12 +9,8 @@
     <link type="text/css" href="<?php echo base_url('assets/jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet"/>   	
 	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-2.1.1.min.js')?>"></script>  
 	<script type="text/javascript" src="<?php echo base_url('assets/DataTables-1.10.18/js/jquery.dataTables.min.js')?>" ></script>  
-	<script type="text/javascript" src="<?php echo base_url('assets/DataTables-1.10.18/js/dataTables.bootstrap.js')?>" ></script>
- 
-</script> 
-
-
-</head>
+	
+ </head>
        
 
 <body id="page5">
@@ -58,7 +54,7 @@
 													<table id="tabel_laporan" class="display" cellspacing="0" width="100%">
 														<thead><th>
 														<tr style="background:grey;">
-															<th>Nomor </th>
+															<th>No </th>
 															<th>ID Laporan</th>
 															<th>Tanggal Pinjam</th>
 															<th>Anggota</th>
@@ -68,9 +64,11 @@
 														</thead>
 														<tbody>
 														<?php
+														$i=1;
 															foreach ($data as $col){?>
-														<tr>
-															<td><?php echo $col['nomor_sepeda'];?></td>
+														<tr>													
+																														
+															<td><?php echo $i; $i++?></td>
 															<td><?php echo $col['id_laporan'];?></td>
 															<td><?php echo $col['datetime_pinjam'];?></td>
 															<td><?php echo $col['no_kartu_anggota'];?></td>
@@ -80,7 +78,7 @@
 															<?php }	?>
 															</tbody>
 													</table>
-													<a href="<?php echo base_url()."index.php/crud/add_data";?>">Tambah Data</a>									
+																			
                         
                                                        				
                                                  

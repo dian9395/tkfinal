@@ -9,7 +9,7 @@
     <link type="text/css" href="<?php echo base_url('assets/jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet"/>   	
 	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-2.1.1.min.js')?>"></script>  
 	<script type="text/javascript" src="<?php echo base_url('assets/DataTables-1.10.18/js/jquery.dataTables.min.js')?>" ></script>  
-	<script type="text/javascript" src="<?php echo base_url('assets/DataTables-1.10.18/js/dataTables.bootstrap.js')?>" ></script>
+	
 		
 </head>
       
@@ -63,7 +63,7 @@
 													<table id="tabel_transaksi" class="display" cellspacing="0" width="100%">
 														<thead>
 															<tr style="background:grey;">
-															<th>Nomor </th>
+															<th>No </th>
 															<th>Tanggal</th>
 															<th>Jenis Transaksi</th>
 															<th>Nominal</th>
@@ -71,14 +71,17 @@
 														</thead>
 														<tbody>
 														<?php
+														$i=1;
 															foreach ($data as $col){?>
-														<tr>
-															<td><?php echo $col['no_kartu_anggota'];?></td>
+														<tr>													
+																														
+															<td><?php echo $i; $i++?></td>
 															<td><?php echo $col['date_time'];?></td>
 															<td><?php echo $col['jenis'];?></td>
 															<td><?php echo $col['nominal'];?></td>
 																	
 														</tr>
+
 															<?php }	?> 
 														</tbody>              
 													</table>                        

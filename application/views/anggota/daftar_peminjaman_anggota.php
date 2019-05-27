@@ -1,69 +1,46 @@
 <html>
 <head>
-    <title>Halaman Admin - Daftar Peminjaman</title>
+    <title>Halaman Anggota - Daftar Peminjaman</title>
     <link rel="stylesheet" href="<?php echo base_url('assets/css/reset.css')?>" type="text/css" media="screen">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css')?>" type="text/css" media="screen">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/grid.css')?>" type="text/css" media="screen">
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/dropdown.css')?>" type="text/css" media="screen"> 
-    <link type="text/css" href="jquery-ui-1.11.2/jquery-ui.css" rel="stylesheet"/>  	
-	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>  
-	<script type="text/javascript" src="jquery-ui-1.11.2/jquery-ui.js"></script>  
-	<script type="text/javascript" src="js/jquery.ui.datepicker-id.js"></script>  
-<script type="text/javascript"> 
-$("document").ready(function(){ 
-$("#tanggal").datepicker();
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/dropdown.css')?>" type="text/css" media="screen"> 
+    <link rel="stylesheet" href="<?php echo base_url('assets/DataTables-1.10.18/css/jquery.dataTables.css ')?>" type="text/css" media="screen"> 
+    <link type="text/css" href="<?php echo base_url('assets/jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet"/>      
+    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-2.1.1.min.js')?>"></script>  
+    <script type="text/javascript" src="<?php echo base_url('assets/DataTables-1.10.18/js/jquery.dataTables.min.js')?>" ></script>  
+   
+</head>  
 
-}); 
-</script> 
+<body>
+    <header class="header">
 
-
-</head>
-       
-
-<body id="page5">
-	<header class="header">
-
-	
-		<div class="menu-kelompok1">
+    <div class="menu-kelompok1">
  
-		<ul>
-			<li class="dropdown"><a href="#">Acara</a>
-			<ul class="isi-dropdown">
-					<li><a href="#">Tambah Acara</a></li>
-					<li><a href="#">Daftar Acara</a></li>
-				</ul></li>
-			<li class="dropdown"><a href="#">Petugas</a>
-			<ul class="isi-dropdown">
-					<li><a href="#">Tambah Penugasan</a></li>
-					<li><a href="#">Daftar Penugasan</a></li>
-				</ul></li>
-			<li class="dropdown"><a href="#">Stasiun</a>
-				<ul class="isi-dropdown">
-					<li><a href="#">Tambah Stasiun</a></li>
-					<li><a href="#">Daftar Stasiun</a></li>
-				</ul>
-			</li>
-			<li class="dropdown"><a href="#">Sepeda</a>
-				<ul class="isi-dropdown">
-					<li><a href="#">Tambah Sepeda</a></li>
-					<li><a href="#">Daftar Sepeda</a></li>
-				</ul>
-			</li>
-			<li class="dropdown"><a href="#">Voucher</a>
-				<ul class="isi-dropdown">
-					<li><a href="#">Tambah Voucher</a></li>
-					<li><a href="#">Daftar Voucher</a></li>
-				</ul>
-			</li>
-			<li><a href="#">Daftar Peminjaman</a></li>
-			<li><a href="#">Daftar Laporan</a></li>
-			<li><a href="#">Logout</a></li>
-			
-		</ul>
+        <ul>
+            
+            <li><a href="#">Saldo Sharebike Pay:20000</a></li>
+            <li><a href="#">Daftar Stasiun</a></li>
+            <li><a href="#">Daftar Sepeda</a></li>
+            <li class="dropdown"><a href="#">Peminjaman</a>
+                <ul class="isi-dropdown">
+                    <li><a href="#">Buat Peminjaman</a></li>
+                    <li><a href="#">Daftar Peminjaman</a></li>
+                </ul>
+            </li>
+            <li class="dropdown"><a href="#">Transaksi</a>
+                <ul class="isi-dropdown">
+                    <li><a href="#">Topup Sharebike Pay</a></li>
+                    <li><a href="#">Riwayat Transaksi</a></li>
+                </ul>
+            </li>
+            <li><a href="<?php echo base_url()."dbs/daftar_acara_anggota";?>">Daftar Acara</a></li>
+            <li><a href="#">Daftar Voucher</a></li>
+            <li><a href="<?php echo base_url('dbs/logout'); ?>">Logout</a>>Logout</a></li>
+            
+        </ul>
  
-	
- 
-	</div>
+    </div>
 </header>
     
 
@@ -78,10 +55,11 @@ $("#tanggal").datepicker();
                                         <div class="wrapper">
                                             <div class="grid_12">
                                             	<div class="indent-left">
-                                                	<h3 class="p2">Halaman Admin - Daftar Peminjaman</h3>
+                                                	<h3 class="p2">Halaman Anggota - Daftar Peminjaman</h3>
 													
 													<?php echo "<h2>".$this->session->flashdata('pesan')."</h2>"?>
-													<table border="1" style="border-collapse:collapse; width:100%;">
+													<table id="tabel_peminjaman" class="display" cellspacing="0" width="100%">
+													<thead>
 														<tr style="background:grey;">
 															<th>Nomor Kartu Anggota </th>
 															<th>Sepeda </th>
@@ -90,6 +68,8 @@ $("#tanggal").datepicker();
 															<th>Biaya </th>
 															<th>Denda</th>
 														</tr>
+													</thead>
+													<tbody>
 														<?php
 															foreach ($data as $col){?>
 														<tr>
@@ -101,8 +81,9 @@ $("#tanggal").datepicker();
 															<td><?php echo $col['denda'];?></td>																		
 														</tr>
 															<?php }	?>
+													</tbody>
 													</table>
-													<a href="<?php echo base_url()."index.php/crud/add_data";?>">Tambah Data</a>									
+																				
 
                       
                                                        				
@@ -130,5 +111,9 @@ $("#tanggal").datepicker();
             </div>
         </div>
     </footer>
+	<script type="text/javascript">
+    $(document).ready(function(){
+        $('#tabel_peminjaman').DataTable();
+    }); </script>
 </body>
 </html>

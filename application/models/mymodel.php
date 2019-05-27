@@ -22,6 +22,11 @@ class Mymodel extends CI_Model {
 		return $data->result_array();
 	}
 
+	public function GetPeminjamanAnggota($wher=""){
+		$data = $this->db->query('select * from peminjaman'.$$where);
+		return $data->result_array();
+	}
+
 	public function GetPenugasan($where=""){
 		$data = $this->db->query('
 			SELECT pen.ktp, pen.start_datetime, pen.id_stasiun, pen.end_datetime, per.nama, sta.nama AS namasta 

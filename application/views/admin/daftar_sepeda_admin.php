@@ -5,10 +5,11 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css')?>" type="text/css" media="screen">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/grid.css')?>" type="text/css" media="screen">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/dropdown.css')?>" type="text/css" media="screen"> 
-    <link type="text/css" href="jquery-ui-1.11.2/jquery-ui.css" rel="stylesheet"/>   	
-	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>  
-	<script type="text/javascript" src="jquery-ui-1.11.2/jquery-ui.js"></script>  
-	<script type="text/javascript" src="js/jquery.ui.datepicker-id.js"></script>  
+    <link rel="stylesheet" href="<?php echo base_url('assets/DataTables-1.10.18/css/jquery.dataTables.css ')?>" type="text/css" media="screen"> 
+    <link type="text/css" href="<?php echo base_url('assets/jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet"/>   	
+	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-2.1.1.min.js')?>"></script>  
+	<script type="text/javascript" src="<?php echo base_url('assets/DataTables-1.10.18/js/jquery.dataTables.min.js')?>" ></script>  
+
 <script type="text/javascript"> 
 $("document").ready(function(){ 
 $("#tanggal").datepicker();
@@ -65,7 +66,8 @@ $("#tanggal").datepicker();
                                                 	<h3 class="p2">Halaman Admin - Daftar Sepeda</h3>
 						
 													<?php echo "<h2>".$this->session->flashdata('pesan')."</h2>"?>
-													<table border="1" style="border-collapse:collapse; width:100%;">
+													<table id="tabel_sepeda" class="display" cellspacing="0" width="100%">
+														<thead>
 														<tr style="background:grey;">
 															<th>Nomor </th>
 															<th>Merk</th>
@@ -75,25 +77,33 @@ $("#tanggal").datepicker();
 															<th>No. Kartu Penyumbang</th>
 															<th> Action</th>
 														</tr>
+														</thead>
+														<tbody>
 														<?php
 															foreach ($data as $col){?>
 														<tr>
 															<td><?php echo $col['nomor'];?></td>
 															<td><?php echo $col['merk'];?></td>
 															<td><?php echo $col['jenis'];?></td>
-															<td><?php echo $col['status'];?></td>
+															<td><?php
+                                                            if ($col['status'] == 1) {
+                                                                echo 'Dipinjam';
+                                                            }
+                                                            else {
+                                                                echo 'Tersedia';
+															}
+															?></td>
 															<td><?php echo $col['id_stasiun'];?></td>
 															<td><?php echo $col['no_kartu_penyumbang'];?></td>
 															<td align="center">
-																<a href="<?php echo base_url()."index.php/crud/edit_data/".$dd['nomor'];?>">Update</a> ||
-																<a href="<?php echo base_url()."index.php/crud/edit_data/".$dd['nomor'];?>">Delete</a> ||
+																<a href="<?php echo base_url()."crud/edit_data/".$col['nomor'];?>">Update</a> ||
+																<a href="<?php echo base_url()."crud/edit_data/".$col['nomor'];?>">Delete</a> ||
 															</td>				
 														</tr>
 															<?php }	?>
+														</tbody>
 													</table>
-													<a href="<?php echo base_url()."index.php/crud/add_data";?>">Tambah Data</a>									
-                  
-                                                       				
+																	
                                                  
                                                 </div>
                                             </div>
@@ -107,6 +117,7 @@ $("#tanggal").datepicker();
         </div>
  
     </section>
+	
     <footer>
         <div class="main">
         	<div class="container_12">
@@ -118,5 +129,9 @@ $("#tanggal").datepicker();
             </div>
         </div>
     </footer>
+	<script type="text/javascript">
+	$(document).ready(function(){
+        $('#tabel_sepeda').DataTable();
+    }); </script>
 </body>
 </html>

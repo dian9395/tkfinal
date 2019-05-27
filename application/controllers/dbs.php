@@ -258,6 +258,11 @@ class Dbs extends CI_Controller {
 		$this->load->view('anggota/daftar_sepeda_anggota.php',array('data'=>$data));
 	}
 
+	public function daftar_peminjaman_anggota(){
+		$data=$this->mymodel->GetPeminjaman();		
+		$this->load->view('anggota/daftar_peminjaman_anggota.php',array('data'=>$data));
+	}
+
 	public function login (){
 		$this->load->view('login');
 	}
