@@ -21,7 +21,7 @@
             
             <li><a href="#">Saldo Sharebike Pay: <?php echo $this->session->userdata('saldo')?></a></li>
             <li><a href="#">Daftar Stasiun</a></li>
-            <li><a href="#">Daftar Sepeda</a></li>
+            <li><a href="<?php echo base_url()."dbs/daftar_sepeda_anggota"; ?>">Daftar Sepeda</a></li>
             <li class="dropdown"><a href="#">Peminjaman</a>
                 <ul class="isi-dropdown">
                     <li><a href="#">Buat Peminjaman</a></li>
@@ -30,8 +30,8 @@
             </li>
             <li class="dropdown"><a href="#">Transaksi</a>
                 <ul class="isi-dropdown">
-                    <li><a href="#">Topup Sharebike Pay</a></li>
-                    <li><a href="#">Riwayat Transaksi</a></li>
+                    <li><a href="<?php echo base_url()."dbs/topup"; ?>">Topup Sharebike Pay</a></li>
+                    <li><a href="<?php echo base_url()."dbs/riwayat_transaksi"; ?>">Riwayat Transaksi</a></li>
                 </ul>
             </li>
             <li><a href="<?php echo base_url()."dbs/daftar_acara_anggota";?>">Daftar Acara</a></li>
@@ -61,6 +61,7 @@
 													<table id="tabel_peminjaman" class="display" cellspacing="0" width="100%">
 													<thead>
 														<tr style="background:grey;">
+                                                            <th>No </th>
 															<th>Nomor Kartu Anggota </th>
 															<th>Sepeda </th>
 															<th>Stasiun </th>
@@ -71,8 +72,10 @@
 													</thead>
 													<tbody>
 														<?php
+                                                        $i=1;
 															foreach ($data as $col){?>
 														<tr>
+                                                            <td><?php echo $i++?></td>
 															<td><?php echo $col['no_kartu_anggota'];?></td>
 															<td><?php echo $col['nomor_sepeda'];?></td>
 															<td><?php echo $col['id_stasiun'];?></td>
