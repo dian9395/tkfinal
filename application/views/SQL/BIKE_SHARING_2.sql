@@ -1,7 +1,7 @@
 
-CREATE DATABASE bike_sharing;
+CREATE DATABASE bike_sharing_universitasindo;
 
-CREATE TABLE bike_sharing.acara (
+CREATE TABLE bike_sharing_universitasindo.acara (
     id_acara varchar(10) NOT NULL,
     judul varchar(100) NOT NULL,
     deskripsi text,
@@ -10,19 +10,19 @@ CREATE TABLE bike_sharing.acara (
     is_free boolean NOT NULL
 );
 
-CREATE TABLE bike_sharing.acara_stasiun (
+CREATE TABLE bike_sharing_universitasindo.acara_stasiun (
     id_stasiun varchar(10) NOT NULL,
     id_acara varchar(10) NOT NULL
 );
 
-CREATE TABLE bike_sharing.anggota (
+CREATE TABLE bike_sharing_universitasindo.anggota (
     no_kartu varchar(10) NOT NULL,
     saldo int,
     points integer,
     ktp varchar(20) NOT NULL
 );
 
-CREATE TABLE bike_sharing.laporan (
+CREATE TABLE bike_sharing_universitasindo.laporan (
     id_laporan varchar(10) NOT NULL,
     no_kartu_anggota varchar(10) NOT NULL,
     datetime_pinjam timestamp NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE bike_sharing.laporan (
     status varchar(20) NOT NULL
 );
 
-CREATE TABLE bike_sharing.peminjaman (
+CREATE TABLE bike_sharing_universitasindo.peminjaman (
     no_kartu_anggota varchar(10) NOT NULL,
     datetime_pinjam timestamp  NOT NULL,
     nomor_sepeda varchar(10) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE bike_sharing.peminjaman (
     denda int
 );
 
-CREATE TABLE bike_sharing.penugasan (
+CREATE TABLE bike_sharing_universitasindo.penugasan (
     ktp varchar(20) NOT NULL,
     start_datetime timestamp  NOT NULL,
     id_stasiun varchar(10) NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE bike_sharing.penugasan (
 );
 
 
-CREATE TABLE bike_sharing.person (
+CREATE TABLE bike_sharing_universitasindo.person (
     ktp varchar(20) NOT NULL,
     email varchar(50) NOT NULL,
     nama varchar(50) NOT NULL,
@@ -59,13 +59,13 @@ CREATE TABLE bike_sharing.person (
 );
 
 
-CREATE TABLE bike_sharing.petugas (
+CREATE TABLE bike_sharing_universitasindo.petugas (
     ktp varchar(20) NOT NULL,
     gaji int NOT NULL
 );
 
 
-CREATE TABLE bike_sharing.sepeda (
+CREATE TABLE bike_sharing_universitasindo.sepeda (
     nomor varchar(10) NOT NULL,
     merk varchar(10) NOT NULL,
     jenis varchar(50) NOT NULL,
@@ -74,7 +74,7 @@ CREATE TABLE bike_sharing.sepeda (
     no_kartu_penyumbang varchar(20)
 );
 
-CREATE TABLE bike_sharing.stasiun (
+CREATE TABLE bike_sharing_universitasindo.stasiun (
     id_stasiun varchar(10) NOT NULL,
     alamat text NOT NULL,
     latitude decimal,
@@ -82,14 +82,14 @@ CREATE TABLE bike_sharing.stasiun (
     nama varchar(50) NOT NULL
 );
 
-CREATE TABLE bike_sharing.transaksi (
+CREATE TABLE bike_sharing_universitasindo.transaksi (
     no_kartu_anggota varchar(10) NOT NULL,
     date_time timestamp NOT NULL,
     jenis varchar(20) NOT NULL,
     nominal int NOT NULL
 );
 
-CREATE TABLE bike_sharing.transaksi_khusus_peminjaman (
+CREATE TABLE bike_sharing_universitasindo.transaksi_khusus_peminjaman (
     no_kartu_anggota varchar(10) NOT NULL,
     date_time timestamp  NOT NULL,
     no_kartu_peminjam varchar(10),
@@ -98,7 +98,7 @@ CREATE TABLE bike_sharing.transaksi_khusus_peminjaman (
     id_stasiun varchar(10)
 );
 
-CREATE TABLE bike_sharing.voucher (
+CREATE TABLE bike_sharing_universitasindo.voucher (
     id_voucher varchar(10) NOT NULL,
     nama varchar(255) NOT NULL,
     kategori varchar(255) NOT NULL,
@@ -108,94 +108,94 @@ CREATE TABLE bike_sharing.voucher (
 );
 
 
-ALTER TABLE bike_sharing.acara
+ALTER TABLE bike_sharing_universitasindo.acara
     ADD CONSTRAINT PRIMARY KEY (id_acara);
 
-ALTER TABLE bike_sharing.acara_stasiun
+ALTER TABLE bike_sharing_universitasindo.acara_stasiun
     ADD CONSTRAINT PRIMARY KEY (id_stasiun, id_acara);
 
-ALTER TABLE bike_sharing.anggota
+ALTER TABLE bike_sharing_universitasindo.anggota
     ADD CONSTRAINT PRIMARY KEY (no_kartu);
 
-ALTER TABLE  bike_sharing.laporan
+ALTER TABLE  bike_sharing_universitasindo.laporan
     ADD CONSTRAINT laporan_ PRIMARY KEY (id_laporan, no_kartu_anggota, datetime_pinjam, nomor_sepeda, id_stasiun);
 
-ALTER TABLE  bike_sharing.peminjaman
+ALTER TABLE  bike_sharing_universitasindo.peminjaman
     ADD CONSTRAINT peminjaman_ PRIMARY KEY (no_kartu_anggota, datetime_pinjam, nomor_sepeda, id_stasiun);
 
-ALTER TABLE  bike_sharing.penugasan
+ALTER TABLE  bike_sharing_universitasindo.penugasan
     ADD CONSTRAINT penugasan_ PRIMARY KEY (ktp, start_datetime, id_stasiun);
 
-ALTER TABLE  bike_sharing.person
+ALTER TABLE  bike_sharing_universitasindo.person
     ADD CONSTRAINT UNIQUE (email);
 
-ALTER TABLE  bike_sharing.person
+ALTER TABLE  bike_sharing_universitasindo.person
     ADD CONSTRAINT PRIMARY KEY (ktp);
 
-ALTER TABLE  bike_sharing.petugas
+ALTER TABLE  bike_sharing_universitasindo.petugas
     ADD CONSTRAINT petugas_ PRIMARY KEY (ktp);
 
-ALTER TABLE  bike_sharing.sepeda
+ALTER TABLE  bike_sharing_universitasindo.sepeda
     ADD CONSTRAINT sepeda_ PRIMARY KEY (nomor);
 
-ALTER TABLE  bike_sharing.stasiun
+ALTER TABLE  bike_sharing_universitasindo.stasiun
     ADD CONSTRAINT stasiun_ PRIMARY KEY (id_stasiun);
 
-ALTER TABLE  bike_sharing.transaksi_khusus_peminjaman
+ALTER TABLE  bike_sharing_universitasindo.transaksi_khusus_peminjaman
     ADD CONSTRAINT transaksi_khusus_peminjaman_ PRIMARY KEY (no_kartu_anggota, date_time);
 
-ALTER TABLE  bike_sharing.transaksi
+ALTER TABLE  bike_sharing_universitasindo.transaksi
     ADD CONSTRAINT PRIMARY KEY (no_kartu_anggota, date_time);
 
-ALTER TABLE  bike_sharing.voucher
+ALTER TABLE  bike_sharing_universitasindo.voucher
     ADD CONSTRAINT PRIMARY KEY (id_voucher);
 
-ALTER TABLE  bike_sharing.acara_stasiun
-    ADD CONSTRAINT FOREIGN KEY (id_acara) REFERENCES bike_sharing.acara(id_acara) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE  bike_sharing_universitasindo.acara_stasiun
+    ADD CONSTRAINT FOREIGN KEY (id_acara) REFERENCES bike_sharing_universitasindo.acara(id_acara) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE  bike_sharing.acara_stasiun
-    ADD CONSTRAINT FOREIGN KEY (id_stasiun) REFERENCES bike_sharing.stasiun(id_stasiun) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE  bike_sharing_universitasindo.acara_stasiun
+    ADD CONSTRAINT FOREIGN KEY (id_stasiun) REFERENCES bike_sharing_universitasindo.stasiun(id_stasiun) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE  bike_sharing.anggota
-    ADD CONSTRAINT FOREIGN KEY (ktp) REFERENCES bike_sharing.person(ktp) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE  bike_sharing_universitasindo.anggota
+    ADD CONSTRAINT FOREIGN KEY (ktp) REFERENCES bike_sharing_universitasindo.person(ktp) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE  bike_sharing.laporan
-    ADD CONSTRAINT FOREIGN KEY (no_kartu_anggota, datetime_pinjam, nomor_sepeda, id_stasiun) REFERENCES bike_sharing.peminjaman(no_kartu_anggota, datetime_pinjam, nomor_sepeda, id_stasiun) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE  bike_sharing_universitasindo.laporan
+    ADD CONSTRAINT FOREIGN KEY (no_kartu_anggota, datetime_pinjam, nomor_sepeda, id_stasiun) REFERENCES bike_sharing_universitasindo.peminjaman(no_kartu_anggota, datetime_pinjam, nomor_sepeda, id_stasiun) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE  bike_sharing.peminjaman
-    ADD CONSTRAINT FOREIGN KEY (id_stasiun) REFERENCES bike_sharing.stasiun(id_stasiun) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE  bike_sharing_universitasindo.peminjaman
+    ADD CONSTRAINT FOREIGN KEY (id_stasiun) REFERENCES bike_sharing_universitasindo.stasiun(id_stasiun) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE  bike_sharing.peminjaman
-    ADD CONSTRAINT FOREIGN KEY (no_kartu_anggota) REFERENCES bike_sharing.anggota(no_kartu) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE  bike_sharing_universitasindo.peminjaman
+    ADD CONSTRAINT FOREIGN KEY (no_kartu_anggota) REFERENCES bike_sharing_universitasindo.anggota(no_kartu) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE  bike_sharing.peminjaman
-    ADD CONSTRAINT FOREIGN KEY (nomor_sepeda) REFERENCES bike_sharing.sepeda(nomor) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE  bike_sharing_universitasindo.peminjaman
+    ADD CONSTRAINT FOREIGN KEY (nomor_sepeda) REFERENCES bike_sharing_universitasindo.sepeda(nomor) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE  bike_sharing.penugasan
-    ADD CONSTRAINT FOREIGN KEY (id_stasiun) REFERENCES bike_sharing.stasiun(id_stasiun) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE  bike_sharing_universitasindo.penugasan
+    ADD CONSTRAINT FOREIGN KEY (id_stasiun) REFERENCES bike_sharing_universitasindo.stasiun(id_stasiun) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE  bike_sharing.penugasan
-    ADD CONSTRAINT FOREIGN KEY (ktp) REFERENCES bike_sharing.petugas(ktp);
+ALTER TABLE  bike_sharing_universitasindo.penugasan
+    ADD CONSTRAINT FOREIGN KEY (ktp) REFERENCES bike_sharing_universitasindo.petugas(ktp);
 
-ALTER TABLE  bike_sharing.petugas
-    ADD CONSTRAINT FOREIGN KEY (ktp) REFERENCES bike_sharing.person(ktp) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE  bike_sharing_universitasindo.petugas
+    ADD CONSTRAINT FOREIGN KEY (ktp) REFERENCES bike_sharing_universitasindo.person(ktp) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE  bike_sharing.sepeda
-    ADD CONSTRAINT FOREIGN KEY (id_stasiun) REFERENCES bike_sharing.stasiun(id_stasiun) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE  bike_sharing_universitasindo.sepeda
+    ADD CONSTRAINT FOREIGN KEY (id_stasiun) REFERENCES bike_sharing_universitasindo.stasiun(id_stasiun) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE  bike_sharing.sepeda
-    ADD CONSTRAINT FOREIGN KEY (no_kartu_penyumbang) REFERENCES bike_sharing.anggota(no_kartu) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE  bike_sharing_universitasindo.sepeda
+    ADD CONSTRAINT FOREIGN KEY (no_kartu_penyumbang) REFERENCES bike_sharing_universitasindo.anggota(no_kartu) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE  bike_sharing.transaksi_khusus_peminjaman
-    ADD CONSTRAINT FOREIGN KEY (no_kartu_anggota, date_time) REFERENCES bike_sharing.transaksi(no_kartu_anggota, date_time) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE  bike_sharing_universitasindo.transaksi_khusus_peminjaman
+    ADD CONSTRAINT FOREIGN KEY (no_kartu_anggota, date_time) REFERENCES bike_sharing_universitasindo.transaksi(no_kartu_anggota, date_time) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE  bike_sharing.transaksi_khusus_peminjaman
-    ADD CONSTRAINT FOREIGN KEY (no_kartu_peminjam, datetime_pinjam, no_sepeda, id_stasiun) REFERENCES bike_sharing.peminjaman(no_kartu_anggota, datetime_pinjam, nomor_sepeda, id_stasiun) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE  bike_sharing_universitasindo.transaksi_khusus_peminjaman
+    ADD CONSTRAINT FOREIGN KEY (no_kartu_peminjam, datetime_pinjam, no_sepeda, id_stasiun) REFERENCES bike_sharing_universitasindo.peminjaman(no_kartu_anggota, datetime_pinjam, nomor_sepeda, id_stasiun) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE  bike_sharing.transaksi
-    ADD CONSTRAINT FOREIGN KEY (no_kartu_anggota) REFERENCES bike_sharing.anggota(no_kartu) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE  bike_sharing_universitasindo.transaksi
+    ADD CONSTRAINT FOREIGN KEY (no_kartu_anggota) REFERENCES bike_sharing_universitasindo.anggota(no_kartu) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE  bike_sharing.voucher
-    ADD CONSTRAINT FOREIGN KEY (no_kartu_anggota) REFERENCES bike_sharing.anggota(no_kartu) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE  bike_sharing_universitasindo.voucher
+    ADD CONSTRAINT FOREIGN KEY (no_kartu_anggota) REFERENCES bike_sharing_universitasindo.anggota(no_kartu) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
