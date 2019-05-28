@@ -9,11 +9,7 @@
 	<script src="<?php echo base_url('assets/datepick/datepick.js')?>"></script>
 	<script src="<?php echo base_url('assets/datepick/datepickui.js')?>"></script>
 
-<script type="text/javascript"> 
-$("document").ready(function(){ 
-		$("#datepicker").datepicker();
-		$("#datepicker1").datepicker();
-}); 
+
 </script> 
 </head>
        
@@ -85,12 +81,10 @@ $("document").ready(function(){
 		</tr>
 		<tr>
 			<td>Tanggal Mulai</td>
-			<td><input id ="datepicker" type="text" name="start_datetime" value="<?php echo $start_datetime; ?>" readonly /></td>
-		</tr>
+			<td><input id ="" type="date" name="start_datetime" value="<?php echo $start_datetime; ?>" readonly /></td>		</tr>
 		<tr>
 			<td>Tanggal Selesai</td>
-			<td><input id="datepicker1" type="text" name="end_datetime" value="<?php echo $end_datetime; ?>" /></td>
-		</tr>
+			<td><input id="" type="date" name="end_datetime" value="<?php echo $end_datetime; ?>" /></td>		</tr>
 		<tr>
 			<td>Stasiun</td>
 			<td><input type="text" name="id_stasiun" value="<?php echo $id_stasiun; ?>" /></td>
