@@ -109,11 +109,11 @@ $("document").ready(function(){
 		</tr>
 		<tr>
 			<td>Tanggal Mulai</td>
-			<td><input id ="" type="date" name="tgl_mulai" value="<?php echo $tgl_mulai ?>" /></td>
+			<td><input id ="datepicker" type="text" name="tgl_mulai" value="<?php echo $tgl_mulai ?>" /></td>
 		</tr>
 		<tr>
 			<td>Tanggal Selesai</td>
-			<td><input id ="" type="date" name="tgl_akhir" value="<?php echo $tgl_akhir; ?>" /></td>
+			<td><input id ="datepicker1" type="text" name="tgl_akhir" value="<?php echo $tgl_akhir; ?>" /></td>
 		</tr>
 <!-- 		<tr>
 			<td>Stasiun</td>

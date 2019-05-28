@@ -66,9 +66,8 @@
                                                 	<h3 class="p2">Halaman Admin - Daftar Penugasan</h3>
                                                 	<?php echo "<h2>".$this->session->flashdata('pesan')."</h2>" ?>
 													<table id="tabel_penugasan" class="display" cellspacing="0" width="100%">
-													<thead><th>
+													<thead>
 														<tr style="background:grey;">
-															<td>No</td>
 															<th>Petugas</th>
 															<th>Tanggal Mulai</th>
 															<th>Tanggal Akhir</th>
@@ -78,10 +77,9 @@
 													</thead>
 														<tbody>
 														<?php
-														$i=1;															
+															// print_r($data);die;
 															foreach ($data as $col){?>
 														<tr>
-															<td><?php echo $i; $i++?></td>
 															<td><?php echo $col['ktp'];?> - <?php echo $col['nama'];?></td>
 															<td><?php echo $col['start_datetime'];?></td>
 															<td><?php echo $col['end_datetime'];?></td>

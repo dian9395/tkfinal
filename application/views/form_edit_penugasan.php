@@ -81,15 +81,15 @@ $("document").ready(function(){
 	<table>
 		<tr>
 			<td>Petugas</td>
-			<td><input type="text" size="40" maxlength="40" name="ktp" value="<?php echo $ktp; ?>" readonly /></td>
+			<td><input type="text" name="ktp" value="<?php echo $ktp; ?>" readonly /></td>
 		</tr>
 		<tr>
 			<td>Tanggal Mulai</td>
-			<td><input id ="" type="date" name="start_datetime" value="<?php echo $start_datetime; ?>" readonly /></td>
+			<td><input id ="datepicker" type="text" name="start_datetime" value="<?php echo $start_datetime; ?>" readonly /></td>
 		</tr>
 		<tr>
 			<td>Tanggal Selesai</td>
-			<td><input id="" type="date" name="end_datetime" value="<?php echo $end_datetime; ?>" /></td>
+			<td><input id="datepicker1" type="text" name="end_datetime" value="<?php echo $end_datetime; ?>" /></td>
 		</tr>
 		<tr>
 			<td>Stasiun</td>

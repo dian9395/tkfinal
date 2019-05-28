@@ -68,7 +68,6 @@
 													<table id="tabel_acara" class="display" cellspacing="0" width="100%">
 													<thead><th>
 														<tr style="background:grey;">
-															<td>No</td>
 															<th>Judul</th>
 															<th>Deskripsi</th>
 															<th>Tanggal Mulai</th>
@@ -79,10 +78,8 @@
 													</thead>
 														<tbody>
 														<?php
-														$i=1;
 															foreach ($data as $col){?>
 														<tr>
-															<td><?php echo $i; $i++?></td>
 															<td><?php echo $col['judul'];?></td>
 															<td><?php echo $col['deskripsi'];?></td>
 															<td><?php echo $col['tgl_mulai'];?></td>

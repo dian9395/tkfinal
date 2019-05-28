@@ -35,7 +35,7 @@ $("#tanggal").datepicker();
                                                     
                                               
 <table>
-<form name="register" id="contact-form" method="post" action="<?php echo base_url('dbs/aksi_login'); ?>"  enctype="multipart/form-data" onSubmit="return valregister()">
+<form name="register" id="contact-form" method="post" action="<?php echo base_url('dbs/do_login'); ?>"  enctype="multipart/form-data" onSubmit="return valregister()">
 <fieldset><br></br>
 <tr> 
 	<td> <b>Nomor KTP</b> </td>
