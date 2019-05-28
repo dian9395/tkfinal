@@ -17,18 +17,28 @@ class Dbs extends CI_Controller {
 		$this->load->view('form_add_penugasan',array('data' =>$data, 'd1' => $d1));
 	}
 
+// 	public function tanggal()
+// 	{
+// 		$this->start_datetime = date("Y-m-d",strtotime(time));
+// 		return $date;
+// 	}
+// $deadline =  date("Y-m-d", strtotime($this->input->post('deadline')))
+
+
 	public function do_insert_penugasan()
 	{
 		$ktp = $_POST['ktp'];
 		$start_datetime = $_POST['start_datetime'];
 		$end_datetime = $_POST['end_datetime'];
-		$id_stasiun = $_POST['id_stasiun'];		
+		$id_stasiun = $_POST['id_stasiun'];	
+		// $date = $this->date();	
 		$data_insert = array(
 			'ktp' => $ktp,
 			'start_datetime' => $start_datetime,
 			'end_datetime' => $end_datetime,
 			'id_stasiun' => $id_stasiun			
 		);
+
 		$res = $this->mymodel->InsertData('penugasan',$data_insert);
 		if($res>=1){
 			$this->session->set_flashdata('pesan','Tambah Data Sukses!!');
@@ -37,6 +47,23 @@ class Dbs extends CI_Controller {
 			echo "<h2>Insert Data Gagal</h2>";
 		}
 	}
+
+		// $data1 = $this->mymodel->CekKTP("where ktp = '$ktp'")->num_rows();
+		// $data2 = $this->mymodel->CekEmail("where email = '$email'")->num_rows();
+		// //No ktp harus belum terdaftar dalam sistem.
+		// //Email harus belum terdaftar dalam sistem.
+		// //Jika ada yang salah maka sistem menampilkan pesan error.
+		// //print($data1. ' ||||||||||||||||||||||| '. $data2); die;
+		// 	if($data1>=1){
+		// 		echo "ktp sudah terdaftar";
+		// 	} 
+		// 	else if($data2>=1){
+		// 		echo "email sudah terdaftar";
+		// 	} else {
+		// 		$res = $this->mymodel->InsertData('person',$data_insert)->num_rows();
+		// 		//$this->session->set_flashdata('pesan','Registrasi berhasil!', $nama);
+		// 		redirect('dbs/daftar_peminjaman_admin');
+		// 	}
 
 	public function do_topup()
 	{
@@ -115,7 +142,7 @@ class Dbs extends CI_Controller {
 		        $randomString .= $characters[rand(0, $charactersLength - 1)];
 		    }
 		    return $randomString;
-		}
+	}
 
 	public function do_insert_acara()
 	{
@@ -140,13 +167,14 @@ class Dbs extends CI_Controller {
 			$this->session->set_flashdata('pesan','Tambah Data Sukses!!');
 			redirect('dbs/daftar_acara_admin');
 		}else{
-			echo "h2>Insert Data Gagal</h2>";
+			echo "<h2>Insert Data Gagal</h2>";
 		}
 	}
 
 	public function edit_data_acara($judul){
 		$acr = $this->mymodel->GetAcara("where judul = '$judul'");
 		$data = array(
+			// "id_acara" => $arc[0]['id_acara'],
 			"judul" => $acr[0]['judul'],
 			"deskripsi" => $acr[0]['deskripsi'],
 			"is_free" => $acr[0]['is_free'],
@@ -165,10 +193,11 @@ class Dbs extends CI_Controller {
 		$tgl_akhir= $_POST['tgl_akhir'];
 		// $id_stasiun= $_POST['id_stasiun'];
 		$data_update = array(
+			'judul' => $judul,
 			'deskripsi' => $deskripsi,
 			'is_free' => $is_free,
 			'tgl_mulai' => $tgl_mulai,
-			'tgl_akhir' => $tgl_akhir,
+			'tgl_akhir' => $tgl_akhir
 			// 'id_stasiun' => $id_stasiun,
 		);
 		$where =  array('judul' => $judul);

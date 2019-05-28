@@ -15,10 +15,7 @@
 
 <body id="page5">
 	<header class="header">
-
-	
 		<div class="menu-kelompok1">
- 
 		<ul>
 			<li><a href="<?php echo base_url()."dbs/daftar_penugasan_petugas";?>">Daftar Penugasan</a></li>
 			<li><a href="#">Daftar Stasiun</a></li>
@@ -27,7 +24,7 @@
 			<li><a href="<?php echo base_url()."dbs/daftar_laporan_petugas";?>">Daftar Laporan</a></li>
 			<li><a href="#">Daftar Peminjaman</a></li>
 			<li><a href="#">Daftar Voucher</a></li>
-			<li><a href="#">Logout</a></li>
+			<li><a href="<?php echo base_url('dbs/logout'); ?>">Logout</a>>Logout</a></li>	
 			
 		</ul>
  
@@ -66,8 +63,7 @@
 														<?php
 														$i=1;
 															foreach ($data as $col){?>
-														<tr>													
-																														
+														<tr>															
 															<td><?php echo $i; $i++?></td>
 															<td><?php echo $col['id_laporan'];?></td>
 															<td><?php echo $col['datetime_pinjam'];?></td>

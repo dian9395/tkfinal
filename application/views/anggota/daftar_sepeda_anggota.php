@@ -25,7 +25,7 @@
 			<li class="dropdown"><a href="#">Peminjaman</a>
 				<ul class="isi-dropdown">
 					<li><a href="#">Buat Peminjaman</a></li>
-					<li><a href="#">Daftar Peminjaman</a></li>
+					<li><a href="<?php echo base_url()."dbs/daftar_peminjaman_anggota"; ?>">Daftar Peminjaman</a></li>
 				</ul>
 			</li>
 			<li class="dropdown"><a href="#">Transaksi</a>
@@ -61,8 +61,9 @@
 													<?php echo "<h2>".$this->session->flashdata('pesan')."</h2>"?>
 													<h3 class="p2">Halaman Anggota - Daftar Sepeda</h3>
 													<table id="tabel_sepeda" class="display" cellspacing="0" width="100%">
-													<thead>
+													<thead><th>
 														<tr style="background:grey;">
+															<td>No</td>
 															<th>Nomor </th>
 															<th>Merk</th>
 															<th>Jenis</th>
@@ -74,9 +75,11 @@
 													</thead>
 													<tbody>
 														<?php
+														$i=1;
 															foreach ($data as $col){?>
 													
 														<tr>
+															<td><?php echo $i; $i++?></td>
 															<td><?php echo $col['nomor'];?></td>
 															<td><?php echo $col['merk'];?></td>
 															<td><?php echo $col['jenis'];?></td>

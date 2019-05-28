@@ -97,11 +97,11 @@ $("document").ready(function(){
 		</tr>
 		<tr>
 			<td>Tanggal Mulai</td>
-			<td><input id="datepicker" type="text" size="40" maxlength="40" name="tgl_mulai"/></td>
+			<td><input id="" type="date" size="40" maxlength="40" name="tgl_mulai"/></td>
 		</tr>
 		<tr>
 			<td>Tanggal Selesai</td>
-			<td><input id="datepicker1" type="text" size="40" maxlength="40" name="tgl_akhir"/></td>
+			<td><input id="" type="date" size="40" maxlength="40" name="tgl_akhir"/></td>
 		</tr>
 <!-- 		<tr>
 			<td>Stasiun</td>

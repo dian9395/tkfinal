@@ -23,22 +23,22 @@
 			
 			<li><a href="#">Saldo Sharebike Pay: <?php echo $this->session->userdata('saldo')?></a></li>
 			<li><a href="#">Daftar Stasiun</a></li>
-			<li><a href="#">Daftar Sepeda</a></li>
+			<li><a href="<?php echo base_url()."dbs/daftar_sepeda_anggota"; ?>">Daftar Sepeda</a></li>
 			<li class="dropdown"><a href="#">Peminjaman</a>
 				<ul class="isi-dropdown">
 					<li><a href="#">Buat Peminjaman</a></li>
-					<li><a href="#">Daftar Peminjaman</a></li>
+					<li><a href="<?php echo base_url()."dbs/daftar_peminjaman_anggota"; ?>">Daftar Peminjaman</a></li>
 				</ul>
 			</li>
 			<li class="dropdown"><a href="#">Transaksi</a>
 				<ul class="isi-dropdown">
 					<li><a href="<?php echo base_url()."dbs/topup"; ?>">Topup Sharebike Pay</a></li>
-					<li><a href="#">Riwayat Transaksi</a></li>
+					<li><a href="<?php echo base_url()."dbs/riwayat_transaksi"; ?>">Riwayat Transaksi</a></li>
 				</ul>
 			</li>
-			<li><a href="#">Daftar Acara</a></li>
+			<li><a href="<?php echo base_url()."dbs/daftar_acara_anggota"; ?>">Daftar Acara</a></li>
 			<li><a href="#">Daftar Voucher</a></li>
-			<li><a href="index">Logout</a></li>
+			<li><a href="<?php echo base_url()."dbs/logout"; ?>">Logout</a></li>
 			
 		</ul>
  
