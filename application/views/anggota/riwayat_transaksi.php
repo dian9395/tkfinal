@@ -36,7 +36,7 @@
 					<li><a href="<?php echo base_url()."dbs/riwayat_transaksi"; ?>">Riwayat Transaksi</a></li>
 				</ul>
 			</li>
-			<li><a href="#">Daftar Acara</a></li>
+			<li><a href="<?php echo base_url()."dbs/daftar_acara_anggota"; ?>">Daftar Acara</a></li>
 			<li><a href="#">Daftar Voucher</a></li>
 			<li><a href="<?php echo base_url()."dbs/logout"; ?>">Logout</a></li>
 			
