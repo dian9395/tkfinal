@@ -9,12 +9,7 @@
 	<script src="<?php echo base_url('assets/datepick/datepick.js')?>"></script>
 	<script src="<?php echo base_url('assets/datepick/datepickui.js')?>"></script>
 
-<script type="text/javascript"> 
-$("document").ready(function(){ 
-		$("#datepicker").datepicker();
-		$("#datepicker1").datepicker();
-}); 
-</script> 
+
 </head>
        
 
@@ -114,7 +109,7 @@ $("document").ready(function(){
 		<tr>
 			<td>Tanggal Selesai</td>
 			<td><input id ="" type="date" name="tgl_akhir" value="<?php echo $tgl_akhir; ?>" /></td>
-		</tr>
+			</tr>
 <!-- 		<tr>
 			<td>Stasiun</td>
 			<td><input type="text" name="is_stasiun" value="<?php echo $is_stasiun; ?>" /></td>		

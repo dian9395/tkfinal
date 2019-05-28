@@ -17,28 +17,18 @@ class Dbs extends CI_Controller {
 		$this->load->view('form_add_penugasan',array('data' =>$data, 'd1' => $d1));
 	}
 
-// 	public function tanggal()
-// 	{
-// 		$this->start_datetime = date("Y-m-d",strtotime(time));
-// 		return $date;
-// 	}
-// $deadline =  date("Y-m-d", strtotime($this->input->post('deadline')))
-
-
 	public function do_insert_penugasan()
 	{
 		$ktp = $_POST['ktp'];
 		$start_datetime = $_POST['start_datetime'];
 		$end_datetime = $_POST['end_datetime'];
-		$id_stasiun = $_POST['id_stasiun'];	
-		// $date = $this->date();	
+		$id_stasiun = $_POST['id_stasiun'];		
 		$data_insert = array(
 			'ktp' => $ktp,
 			'start_datetime' => $start_datetime,
 			'end_datetime' => $end_datetime,
 			'id_stasiun' => $id_stasiun			
 		);
-
 		$res = $this->mymodel->InsertData('penugasan',$data_insert);
 		if($res>=1){
 			$this->session->set_flashdata('pesan','Tambah Data Sukses!!');
@@ -48,22 +38,69 @@ class Dbs extends CI_Controller {
 		}
 	}
 
-		// $data1 = $this->mymodel->CekKTP("where ktp = '$ktp'")->num_rows();
-		// $data2 = $this->mymodel->CekEmail("where email = '$email'")->num_rows();
-		// //No ktp harus belum terdaftar dalam sistem.
-		// //Email harus belum terdaftar dalam sistem.
-		// //Jika ada yang salah maka sistem menampilkan pesan error.
-		// //print($data1. ' ||||||||||||||||||||||| '. $data2); die;
-		// 	if($data1>=1){
-		// 		echo "ktp sudah terdaftar";
-		// 	} 
-		// 	else if($data2>=1){
-		// 		echo "email sudah terdaftar";
-		// 	} else {
-		// 		$res = $this->mymodel->InsertData('person',$data_insert)->num_rows();
-		// 		//$this->session->set_flashdata('pesan','Registrasi berhasil!', $nama);
-		// 		redirect('dbs/daftar_peminjaman_admin');
-		// 	}
+	public function do_login(){
+		$username = $this->input->post('noktp');
+		$password = $this->input->post('email');
+		$where = array(
+			'ktp' => $username,
+			'email' =>$password
+			);
+		$cek = $this->mymodel->cek_login("person",$where)->num_rows();
+		if($cek == 1){
+			$cekR = $this->mymodel->Cek($username);
+			//print_r($cek);die;
+			if($cekR == 'anggota'){
+				// code redirect anggota
+				$nama = $this->mymodel->GetNamaPengguna($username);
+				$saldo = $this->mymodel->GetSaldo($username);
+				$nokartu = $this->mymodel->GetNomorKartu($username);
+				$data_session = array(
+					'ktp' => $username,
+					'nama' => 'Hi '.$nama[0]['nama'],
+					'saldo' => $saldo[0]['saldo'],
+					'no_kartu' => $nokartu[0]['no_kartu']
+					);
+				
+				//$role = $this->mymodel->CekRole($username);
+				$this->session->set_userdata($data_session);
+				$this->session->set_flashdata('pesan','"'.$this->session->userdata('nama').'"');
+				redirect('dbs/daftar_sepeda_anggota');
+			} else if ($cekR == 'petugas'){
+				// session buat petugas
+				$nama = $this->mymodel->GetNamaPengguna($username);
+				$data_session = array(
+					'ktp' => $username,
+					'nama' => 'Hi '.$nama[0]['nama'],
+					);
+				
+				//$role = $this->mymodel->CekRole($username);
+				$this->session->set_userdata($data_session);
+				$this->session->set_flashdata('pesan','"'.$this->session->userdata('nama').'"');
+				
+				//code redirect petugas
+				redirect('dbs/daftar_penugasan_petugas');
+			} else if ($cekR == 'admin'){
+				// session buat admin
+				$nama = $this->mymodel->GetNamaPengguna($username);
+				$data_session = array(
+					'ktp' => $username,
+					'nama' => 'Hi '.$nama[0]['nama'],
+					);
+				
+				//$role = $this->mymodel->CekRole($username);
+				$this->session->set_userdata($data_session);
+				$this->session->set_flashdata('pesan','"'.$this->session->userdata('nama').'"');
+				
+				//code redirect petugas
+				redirect('dbs/daftar_peminjaman_admin');
+			} else {
+				redirect('index');
+			}				
+		} else {
+			echo "Nomor KTP dan email salah. Silakan ulangi lagi.";
+		}
+	}
+
 
 	public function do_topup()
 	{
@@ -142,7 +179,7 @@ class Dbs extends CI_Controller {
 		        $randomString .= $characters[rand(0, $charactersLength - 1)];
 		    }
 		    return $randomString;
-	}
+		}
 
 	public function do_insert_acara()
 	{
@@ -167,14 +204,13 @@ class Dbs extends CI_Controller {
 			$this->session->set_flashdata('pesan','Tambah Data Sukses!!');
 			redirect('dbs/daftar_acara_admin');
 		}else{
-			echo "<h2>Insert Data Gagal</h2>";
+			echo "h2>Insert Data Gagal</h2>";
 		}
 	}
 
 	public function edit_data_acara($judul){
 		$acr = $this->mymodel->GetAcara("where judul = '$judul'");
 		$data = array(
-			// "id_acara" => $arc[0]['id_acara'],
 			"judul" => $acr[0]['judul'],
 			"deskripsi" => $acr[0]['deskripsi'],
 			"is_free" => $acr[0]['is_free'],
@@ -193,11 +229,10 @@ class Dbs extends CI_Controller {
 		$tgl_akhir= $_POST['tgl_akhir'];
 		// $id_stasiun= $_POST['id_stasiun'];
 		$data_update = array(
-			'judul' => $judul,
 			'deskripsi' => $deskripsi,
 			'is_free' => $is_free,
 			'tgl_mulai' => $tgl_mulai,
-			'tgl_akhir' => $tgl_akhir
+			'tgl_akhir' => $tgl_akhir,
 			// 'id_stasiun' => $id_stasiun,
 		);
 		$where =  array('judul' => $judul);
@@ -280,58 +315,10 @@ class Dbs extends CI_Controller {
 		$this->load->view('login');
 	}
 	
-	public function aksi_login(){
-		$username = $this->input->post('noktp');
-		$password = $this->input->post('email');
-		$where = array(
-			'ktp' => $username,
-			'email' =>$password
-			);
-		$cek = $this->mymodel->cek_login("person",$where)->num_rows();
-		if($cek == 1){
-			$cekR = $this->mymodel->Cek($username);
-			//print_r($cek);die;
-			if($cekR == 'anggota'){
-				// code redirect anggota
-				$nama = $this->mymodel->GetNamaAnggota($username);
-				$saldo = $this->mymodel->GetSaldo($username);
-				$nokartu = $this->mymodel->GetNomorKartu($username);
-				$data_session = array(
-					'ktp' => $username,
-					'nama' => 'Hi '.$nama[0]['nama'],
-					'saldo' => $saldo[0]['saldo'],
-					'no_kartu' => $nokartu[0]['no_kartu']
-					);
-				
-				//$role = $this->mymodel->CekRole($username);
-				$this->session->set_userdata($data_session);
-				$this->session->set_flashdata('pesan','"'.$this->session->userdata('nama').'"');
-				redirect('dbs/daftar_sepeda_anggota');
-			} else if ($cekR == 'petugas'){
-				// session buat petugas
-				$nama = $this->mymodel->GetNamaAnggota($username);
-				$data_session = array(
-					'ktp' => $username,
-					'nama' => 'Hi '.$nama[0]['nama'],
-					);
-				
-				//$role = $this->mymodel->CekRole($username);
-				$this->session->set_userdata($data_session);
-				$this->session->set_flashdata('pesan','"'.$this->session->userdata('nama').'"');
-				
-				//code redirect petugas
-				redirect('dbs/daftar_penugasan_petugas');
-			} else {
-				redirect('index');
-			}				
-		} else {
-			echo "Username dan password salah. Silakan ke halaman sebelumnya dan ulangi.";
-		}
-	}
-
+	
 	public function logout(){
 		
-		$array_items = array('ktp', 'nama');
+		$array_items = array('ktp', 'nama', 'saldo', 'no_kartu');
 		$this->session->unset_userdata($array_items);
 		session_destroy();
 		redirect('dbs/index');
@@ -360,12 +347,13 @@ class Dbs extends CI_Controller {
 	}
 
 	public function do_pendaftaran (){
-		$ktp = $_POST['ktp'];
-		$nama = $_POST['nama'];
-		$email = $_POST['email'];		
-		$tgl_lahir = $_POST['tgl_lahir'];	
-		$no_telp = $_POST['no_telp'];	
-		$alamat= $_POST['alamat'];	
+		$ktp =$this->input->post('ktp');		
+		$nama =$this->input->post('nama');
+		$email =$this->input->post('email'); 
+		$tgl_lahir = $this->input->post('tgl_lahir');	
+		$no_telp = $this->input->post('no_telp');;	
+		$alamat= $this->input->post('alamat');	
+		$role=$this->input->post('role');
 		$data_insert = array(
 			'ktp' => $ktp,
 			'nama' => $nama,
@@ -374,24 +362,61 @@ class Dbs extends CI_Controller {
 			'no_telp' => $no_telp,
 			'alamat' => $alamat
 		);
-		
+		$randomString = $this->generateRandomString();
+		$points=0;
+		$saldo=0;
+		$data_insert_anggota = array(
+			'ktp' => $ktp,
+			'no_kartu' => $randomString,
+			'points' => $points,
+			'saldo' => $saldo
+		);	
 
+		$gaji=30000;
+
+		$data_insert_petugas = array(
+			'ktp' => $ktp,
+			'gaji' => $gaji
+		);	
+		
 		$data1 = $this->mymodel->CekKTP("where ktp = '$ktp'")->num_rows();
 		$data2 = $this->mymodel->CekEmail("where email = '$email'")->num_rows();
-		//No ktp harus belum terdaftar dalam sistem.
-		//Email harus belum terdaftar dalam sistem.
-		//Jika ada yang salah maka sistem menampilkan pesan error.
 		//print($data1. ' ||||||||||||||||||||||| '. $data2); die;
+				
+		//$role = $this->mymodel->CekRole($username);
+			$data_session = array(
+					'nama' => 'Hi '.$nama.'. Selamat registrasi berhasil'
+					
+					);
+
+			$this->session->set_userdata($data_session);
+		
 			if($data1>=1){
 				echo "ktp sudah terdaftar";
 			} 
 			else if($data2>=1){
 				echo "email sudah terdaftar";
-			} else {
-				$res = $this->mymodel->InsertData('person',$data_insert)->num_rows();
+			} 
+			else if ($role=='Anggota'){
+				$res1 = $this->mymodel->InsertData('person',$data_insert);
+				$res2 = $this->mymodel->InsertData('anggota',$data_insert_anggota);
 				//$this->session->set_flashdata('pesan','Registrasi berhasil!', $nama);
-				redirect('dbs/daftar_peminjaman_admin');
-			}
+				$this->session->set_flashdata('pesan','"'.$this->session->userdata('nama').'"');
+				
+				redirect('dbs/daftar_sepeda_anggota');
+			}  
+			else if ($role=='Petugas'){
+				$res1 = $this->mymodel->InsertData('person',$data_insert);
+				$res2 = $this->mymodel->InsertData('petugas',$data_insert_petugas);
+				//$this->session->set_flashdata('pesan','Registrasi berhasil!', $nama);
+				
+				$this->session->set_flashdata('pesan','"'.$this->session->userdata('nama').'"');
+				// //print_r($data_insert_anggota); 
+				// print_r($data_insert_petugas); 
+				// die;
+				redirect('dbs/daftar_penugasan_petugas');
+			} else { redirect('index');}
+			
 		
 	}
 

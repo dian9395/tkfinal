@@ -75,7 +75,6 @@
 													<table id="tabel_peminjaman" class="display" cellspacing="0" width="100%">
 														<thead><th>
 															<tr style="background:grey;">
-															<td>No</td>
 															<th>Nomor Kartu Anggota </th>
 															<th>Sepeda </th>
 															<th>Stasiun </th>
@@ -86,10 +85,8 @@
 														</thead>
 														<tbody>
 														<?php
-														$i=1;
 															foreach ($data as $col){?>
 														<tr>
-															<td><?php echo $i; $i++?></td>
 															<td><?php echo $col['no_kartu_anggota'];?></td>
 															<td><?php echo $col['nomor_sepeda'];?></td>
 															<td><?php echo $col['id_stasiun'];?></td>

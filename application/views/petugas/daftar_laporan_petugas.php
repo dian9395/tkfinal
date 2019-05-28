@@ -15,7 +15,10 @@
 
 <body id="page5">
 	<header class="header">
+
+	
 		<div class="menu-kelompok1">
+ 
 		<ul>
 			<li><a href="<?php echo base_url()."dbs/daftar_penugasan_petugas";?>">Daftar Penugasan</a></li>
 			<li><a href="#">Daftar Stasiun</a></li>
@@ -24,7 +27,7 @@
 			<li><a href="<?php echo base_url()."dbs/daftar_laporan_petugas";?>">Daftar Laporan</a></li>
 			<li><a href="#">Daftar Peminjaman</a></li>
 			<li><a href="#">Daftar Voucher</a></li>
-			<li><a href="<?php echo base_url('dbs/logout'); ?>">Logout</a>>Logout</a></li>	
+			<li><a href="#">Logout</a></li>
 			
 		</ul>
  
@@ -46,34 +49,33 @@
                                             <div class="grid_12">
                                             	<div class="indent-left">
                                                 	<h3 class="p2">Halaman Petugas - Daftar Laporan</h3>
-													
 													<?php echo "<h2>".$this->session->flashdata('pesan')."</h2>"?>
-													<table id="tabel_laporan" class="display" cellspacing="0" width="100%">
-														<thead><th>
-														<tr style="background:grey;">
-															<th>No </th>
+													<table id="tabel_laporan" class="display" cellspacing="0" width="100%" >
+													<thead><th>
+													<tr style="background:grey;">
+															<td>No</td>
 															<th>ID Laporan</th>
 															<th>Tanggal Pinjam</th>
 															<th>Anggota</th>
 															<th>Denda</th>
 															<th>Status</th>
 														</tr>
-														</thead>
+													</thead> 
 														<tbody>
 														<?php
 														$i=1;
-															foreach ($data as $col){?>
-														<tr>															
+														foreach ($data as $col){?>
+														<tr>													
 															<td><?php echo $i; $i++?></td>
 															<td><?php echo $col['id_laporan'];?></td>
 															<td><?php echo $col['datetime_pinjam'];?></td>
-															<td><?php echo $col['no_kartu_anggota'];?></td>
-															<td><?php echo $col['id_stasiun'];?></td>
+															<td><?php echo $col['no_kartu_anggota'];?> - <?php echo $col['nama'];?></td>
+															<td><?php echo $col['denda'];?></td>
 															<td><?php echo $col['status'];?></td>																		
 														</tr>
 															<?php }	?>
-															</tbody>
-													</table>
+															</tbody>  
+														</table>
 																			
                         
                                                        				

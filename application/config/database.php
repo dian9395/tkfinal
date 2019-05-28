@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'bike_sharing',
+	'hostname' => 'mysql.storage.cloud.wso2.com',
+	'username' => 'tk5_Iq3fmyKt',
+	'password' => 'tk5basdat',
+	'database' => 'bike_sharing_universitasindo',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

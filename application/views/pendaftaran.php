@@ -54,9 +54,16 @@ $("document").ready(function(){
 </tr>
 
 <tr> 
-	<td> <b>Role</b> </td>
+	<td> <b>Pilih Role</b> </td>
 	<td> : </td>
-	<td> <input type="text" size="60" maxlength="60" name="role"></td>
+	<td>
+	<select name="role">
+	<option value="Anggota">Anggota</option>
+	<option value="Petugas">Petugas</option>
+	
+	</select>
+	</td>
+	
 </tr>
 
 <tr> 
@@ -68,7 +75,8 @@ $("document").ready(function(){
 <tr> 
 	<td> <b>Tanggal Lahir<b> </td>
 	<td> : </td>
-	<td>  <input id="datepicker" type="text" size="60" maxlength="60" name="tgl_lahir">  </td>
+	<td>  <input id="" type="date" size="60" maxlength="60" name="tgl_lahir">  </td>
+	
 </tr>
 
 <tr> 

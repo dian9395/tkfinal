@@ -1,0 +1,20 @@
+print_r($data); die;
+
+anggota:
+45665115465432337377
+adallemore1t@miibeian.gov.cn
+12345678910
+herman@gmail.com
+987654321
+rizki@gmail.com
+
+petugas: 
+99327332362033789910
+callone2h@ow.ly
+
+admin: 3209240903950003
+dian9395@gmail.com
+
+database: bike_sharing_universitasindo
+mysql -u  tk5_Iq3fmyKt -h mysql.storage.cloud.wso2.com -p 
+

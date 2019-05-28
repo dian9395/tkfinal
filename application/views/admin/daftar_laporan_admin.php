@@ -47,7 +47,7 @@
 			</li>
 			<li><a href="<?php echo base_url()."dbs/daftar_peminjaman_admin";?>">Daftar Peminjaman</a></li>
 			<li><a href="<?php echo base_url()."dbs/daftar_laporan_admin";?>">Daftar Laporan</a></li>
-			<li><a href="<?php echo base_url('dbs/logout'); ?>">Logout</a>>Logout</a></li>
+			<li><a href="#">Logout</a></li>
 			
 		</ul>
  
@@ -88,8 +88,8 @@
 															<td><?php echo $i; $i++?></td>
 															<td><?php echo $col['id_laporan'];?></td>
 															<td><?php echo $col['datetime_pinjam'];?></td>
-															<td><?php echo $col['no_kartu_anggota'];?></td>
-															<td><?php echo $col['id_stasiun'];?></td>
+															<td><?php echo $col['no_kartu_anggota'];?> - <?php echo $col['nama'];?></td>
+															<td><?php echo $col['denda'];?></td>
 															<td><?php echo $col['status'];?></td>																		
 														</tr>
 															<?php }	?>

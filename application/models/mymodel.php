@@ -10,25 +10,30 @@ class Mymodel extends CI_Model {
 	public function Cek($ktp){
 		$q1 = $this->db->query('select * from petugas where ktp ='.$ktp);
 		$q2 = $this->db->query('select * from anggota where ktp ='.$ktp);
+		$q3 = $this->db->query('select * from person where ktp ='.$ktp);
 
 		if ($q1->num_rows() > 0){
 			return 'petugas';
 		} else if ($q2->num_rows() > 0){
 			return 'anggota';
+		} else if ($q3->num_rows() > 0){
+			return 'admin';
 		} else {
 			return NULL;
 		}
 	}
 
 	public function GetRiwayatTransaksi($ktp){
-		$data = $this->db->query('SELECT T.date_time, T.jenis, T.nominal FROM anggota A, transaksi T 
+		$data = $this->db->query('SELECT * FROM anggota A, transaksi T 
 		WHERE A.no_kartu=T.no_kartu_anggota AND A.ktp='.$ktp);
 		return $data->result_array();
 
 	}
 
 	public function GetLaporan($where=""){
-		$data = $this->db->query('select * from laporan'.$where);
+		$data = $this->db->query('select * from laporan L,anggota A,person P, peminjaman PM
+		where L.no_kartu_anggota=A.no_kartu AND A.ktp=P.ktp 
+		AND PM.no_kartu_anggota=L.no_kartu_anggota '.$where);
 		return $data->result_array();
 	}
 
@@ -52,7 +57,7 @@ class Mymodel extends CI_Model {
 		return $data->result_array();
 	}
 
-	public function GetNamaAnggota($ktp){
+	public function GetNamaPengguna($ktp){
 		$data = $this->db->query('SELECT nama FROM person WHERE ktp='.$ktp);
 		return $data->result_array();
 	}
@@ -63,29 +68,8 @@ class Mymodel extends CI_Model {
 	}
 
 	public function GetNomorKartu($ktp){
-		$data = $this->db->query('SELECT no_kartu FROM anggota A, transaksi T, person P
-		WHERE A.no_kartu=T.no_kartu_anggota AND A.ktp=P.ktp');
+		$data = $this->db->query('SELECT no_kartu FROM anggota WHERE ktp='.$ktp);
 		return $data->result_array();
-	}
-
-	public function CekRole($ktp){
-		$data1 = $this->db->query('SELECT "'.$ktp.'" FROM person WHERE "'.$ktp.'" IN (SELECT "'.$ktp.'" FROM anggota);');
-		$cek1 = $data1->num_rows();
-		$data2 = $this->db->query('SELECT "'.$ktp.'" FROM person WHERE "'.$ktp.'" IN (SELECT "'.$ktp.'" FROM petugas);');
-		$cek2 = $data2->num_rows();
-		/*print_r($cek1);
-		print('/n');
-		print_r($cek2);*/
-		
-		if ($cek1==1) {
-			return 'anggota';
-		} else if ($cek1==0) {
-			if ($cek2==1){
-				return 'petugas';
-			}
-		} else 
-			return 0;
-		
 	}
 
 	public function GetAcara($where=""){

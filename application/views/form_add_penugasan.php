@@ -91,8 +91,7 @@ $("document").ready(function(){
 		</tr>
 		<tr>
 			<td>Tanggal Mulai</td>
-			<td><input id="" type="date" size="40" maxlength="40" name="start_datetime"/></td>
-		</tr>
+			<td><input id="" type="date" size="40" maxlength="40" name="start_datetime"/></td></tr>
 		<tr>
 			<td>Tanggal Selesai</td>
 			<td><input id="" type="date" size="40" maxlength="40" name="end_datetime"/></td>
