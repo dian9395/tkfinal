@@ -229,10 +229,11 @@ class Dbs extends CI_Controller {
 		$tgl_akhir= $_POST['tgl_akhir'];
 		// $id_stasiun= $_POST['id_stasiun'];
 		$data_update = array(
+			'judul' => $judul,
 			'deskripsi' => $deskripsi,
 			'is_free' => $is_free,
 			'tgl_mulai' => $tgl_mulai,
-			'tgl_akhir' => $tgl_akhir,
+			'tgl_akhir' => $tgl_akhir
 			// 'id_stasiun' => $id_stasiun,
 		);
 		$where =  array('judul' => $judul);

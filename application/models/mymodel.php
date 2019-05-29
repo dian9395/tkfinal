@@ -130,6 +130,11 @@ class Mymodel extends CI_Model {
 		$data = $this->db->query('SELECT id_stasiun, nama FROM stasiun');
 		return $data->result_array();
 	}
+
+	public function GetEditacara($where=""){
+		$data = $this->db->query('select * from acara '.$where);
+		return $data->result_array();
+	}
 }
 ?>
 
