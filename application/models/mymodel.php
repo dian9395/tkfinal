@@ -135,6 +135,16 @@ class Mymodel extends CI_Model {
 		$data = $this->db->query('select * from acara '.$where);
 		return $data->result_array();
 	}
+
+	public function CekStartdt($where=""){
+		$data = $this->db->query('select start_datetime from penugasan '.$where);
+		return $data;
+	}
+
+	public function CekEndtdt($where=""){
+		$data = $this->db->query('select end_datetime from penugasan '.$where);
+		return $data;
+	}
 }
 ?>
 
