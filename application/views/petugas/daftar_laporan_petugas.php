@@ -27,7 +27,11 @@
 			<li><a href="<?php echo base_url()."dbs/daftar_laporan_petugas";?>">Daftar Laporan</a></li>
 			<li><a href="#">Daftar Peminjaman</a></li>
 			<li><a href="#">Daftar Voucher</a></li>
+<<<<<<< HEAD
 			<li><a href="<?php echo base_url('dbs/logout'); ?>">Logout</a></li>
+=======
+			<li><a href="<?php echo base_url('dbs/logout'); ?>">Logout</a>>Logout</a></li>	
+>>>>>>> d3bfb72b8c232316f4ecd1e472bc9d628003ea5c
 			
 		</ul>
  

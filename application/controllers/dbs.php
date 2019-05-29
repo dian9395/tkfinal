@@ -215,7 +215,7 @@ class Dbs extends CI_Controller {
 			"deskripsi" => $acr[0]['deskripsi'],
 			"is_free" => $acr[0]['is_free'],
 			"tgl_mulai" => $acr[0]['tgl_mulai'],
-			"tgl_akhir" => $acr[0]['tgl_akhir']
+			"tgl_akhir" => $acr[0]['tgl_akhir'],
 			// "id_stasiun" => $acr[0]['id_stasiun'],
 			);
 		$this->load->view('form_edit_acara',$data);
@@ -229,10 +229,11 @@ class Dbs extends CI_Controller {
 		$tgl_akhir= $_POST['tgl_akhir'];
 		// $id_stasiun= $_POST['id_stasiun'];
 		$data_update = array(
+			'judul' => $judul,
 			'deskripsi' => $deskripsi,
 			'is_free' => $is_free,
 			'tgl_mulai' => $tgl_mulai,
-			'tgl_akhir' => $tgl_akhir,
+			'tgl_akhir' => $tgl_akhir
 			// 'id_stasiun' => $id_stasiun,
 		);
 		$where =  array('judul' => $judul);

@@ -81,10 +81,12 @@
 		</tr>
 		<tr>
 			<td>Tanggal Mulai</td>
-			<td><input id ="" type="date" name="start_datetime" value="<?php echo $start_datetime; ?>" readonly /></td>		</tr>
+			<td><input id ="" type="date" name="start_datetime" value="<?php echo $start_datetime; ?>" readonly /></td>		
+		</tr>
 		<tr>
 			<td>Tanggal Selesai</td>
-			<td><input id="" type="date" name="end_datetime" value="<?php echo $end_datetime; ?>" /></td>		</tr>
+			<td><input id="" type="date" name="end_datetime" value="<?php echo $end_datetime; ?>" /></td>		
+		</tr>
 		<tr>
 			<td>Stasiun</td>
 			<td><input type="text" name="id_stasiun" value="<?php echo $id_stasiun; ?>" /></td>

@@ -73,6 +73,7 @@
 													<table id="tabel_sepeda" class="display" cellspacing="0" width="100%">
 														<thead>
 														<tr style="background:grey;">
+															<td>No</td>
 															<th>Nomor </th>
 															<th>Merk</th>
 															<th>Jenis</th>
@@ -84,8 +85,10 @@
 														</thead>
 														<tbody>
 														<?php
+														$i=1;
 															foreach ($data as $col){?>
 														<tr>
+															<td><?php echo $i; $i++?></td>
 															<td><?php echo $col['nomor'];?></td>
 															<td><?php echo $col['merk'];?></td>
 															<td><?php echo $col['jenis'];?></td>

@@ -91,15 +91,6 @@
 					<option value="1">Ya</option>
 				  	<option value="0">Tidak</option>
 				 </select>
-<!-- 
-					<?php foreach($data as $d) {?>
-						<option value="<?php echo $d['is_free']?>"><?php echo $d['is_free'] ?></option>
-					<?php } ?>
-				</select>
-
-				<select name=agama class='form-control'>
-                                           <option value='$r[agama]' selected>$r[agama]</option>
-                                           <option value='Islam'>Islam</option> -->
 			</td>
 		</tr>
 		<tr>

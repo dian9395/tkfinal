@@ -45,6 +45,7 @@
 													<table id="tabel_penugasan" class="display" cellspacing="0" width="100%">
 													<thead><th>
 														<tr style="background:grey;">
+															<td>No</td>
 															<th>Petugas</th>
 															<th>Tanggal Mulai</th>
 															<th>Tanggal Akhir</th>
@@ -53,8 +54,10 @@
 													</thead>
 														<tbody>
 														<?php
+														$i=1;
 															foreach ($data as $col){?>
 														<tr>
+															<td><?php echo $i; $i++?></td>
 															<td><?php echo $col['ktp'];?> - <?php echo $col['nama'];?></td>
 															<td><?php echo $col['start_datetime'];?></td>
 															<td><?php echo $col['end_datetime'];?></td>
