@@ -233,7 +233,7 @@ class Dbs extends CI_Controller {
 			'deskripsi' => $deskripsi,
 			'is_free' => $is_free,
 			'tgl_mulai' => $tgl_mulai,
-			'tgl_akhir' => $tgl_akhir
+			'tgl_akhir' => $tgl_akhir,
 			// 'id_stasiun' => $id_stasiun,
 		);
 		$where =  array('judul' => $judul);
