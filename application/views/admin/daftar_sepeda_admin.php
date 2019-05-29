@@ -1,23 +1,14 @@
 <html>
 <head>
-    <title>Halaman Daftar Sepeda</title>
+     <title>Halaman Daftar Sepeda</title>
     <link rel="stylesheet" href="<?php echo base_url('assets/css/reset.css')?>" type="text/css" media="screen">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css')?>" type="text/css" media="screen">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/grid.css')?>" type="text/css" media="screen">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/dropdown.css')?>" type="text/css" media="screen"> 
-    <link rel="stylesheet" href="<?php echo base_url('assets/DataTables-1.10.18/css/jquery.dataTables.css ')?>" type="text/css" media="screen"> 
+	<link rel="stylesheet" href="<?php echo base_url('assets/DataTables-1.10.18/css/jquery.dataTables.css ')?>" type="text/css" media="screen"> 
     <link type="text/css" href="<?php echo base_url('assets/jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet"/>   	
 	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-2.1.1.min.js')?>"></script>  
 	<script type="text/javascript" src="<?php echo base_url('assets/DataTables-1.10.18/js/jquery.dataTables.min.js')?>" ></script>  
-
-<script type="text/javascript"> 
-$("document").ready(function(){ 
-$("#tanggal").datepicker();
-
-}); 
-</script> 
-
-
 </head>
        
 
@@ -26,25 +17,38 @@ $("#tanggal").datepicker();
 
 	<div class="menu-kelompok1">
  
-		<ul>
-			
-			<li><a href="#">Daftar Stasiun</a></li>
-			<li><a href="#">Daftar Sepeda</a></li>
-			<li class="dropdown"><a href="#">Peminjaman</a>
+	<ul>
+			<li class="dropdown"><a href="#">Acara</a>
+			<ul class="isi-dropdown">
+					<li><a href="<?php echo base_url()."dbs/add_data_acara";?>">Tambah Acara</a></li>
+					<li><a href="<?php echo base_url()."dbs/daftar_acara_admin";?>">Daftar Acara</a></li>
+				</ul></li>
+			<li class="dropdown"><a href="#">Petugas</a>
+			<ul class="isi-dropdown">
+					<li><a href="<?php echo base_url()."dbs/add_data_penugasan";?>">Tambah Penugasan</a></li>
+					<li><a href="<?php echo base_url()."dbs/daftar_penugasan_admin";?>">Daftar Penugasan</a></li>
+				</ul></li>
+			<li class="dropdown"><a href="#">Stasiun</a>
 				<ul class="isi-dropdown">
-					<li><a href="#">Buat Peminjaman</a></li>
-					<li><a href="#">Daftar Peminjaman</a></li>
+					<li><a href="#">Tambah Stasiun</a></li>
+					<li><a href="#">Daftar Stasiun</a></li>
 				</ul>
 			</li>
-			<li class="dropdown"><a href="#">Transaksi</a>
+			<li class="dropdown"><a href="#">Sepeda</a>
 				<ul class="isi-dropdown">
-					<li><a href="#">Topup Sharebike Pay</a></li>
-					<li><a href="#">Riwayat Transaksi</a></li>
+					<li><a href="#">Tambah Sepeda</a></li>
+					<li><a href="#">Daftar Sepeda</a></li>
 				</ul>
 			</li>
-			<li><a href="#">Daftar Acara</a></li>
-			<li><a href="#">Daftar Voucher</a></li>
-			<li><a href="#">Logout</a></li>
+			<li class="dropdown"><a href="#">Voucher</a>
+				<ul class="isi-dropdown">
+					<li><a href="#">Tambah Voucher</a></li>
+					<li><a href="#">Daftar Voucher</a></li>
+				</ul>
+			</li>
+			<li><a href="<?php echo base_url()."dbs/daftar_peminjaman_admin";?>">Daftar Peminjaman</a></li>
+			<li><a href="<?php echo base_url()."dbs/daftar_laporan_admin";?>">Daftar Laporan</a></li>
+			<li><a href="<?php echo base_url('dbs/logout'); ?>">Logout</a>>Logout</a></li>
 			
 		</ul>
  

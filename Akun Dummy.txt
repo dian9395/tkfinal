@@ -1,10 +1,10 @@
-print_r($data); die;
-
 anggota:
 45665115465432337377
 adallemore1t@miibeian.gov.cn
+
 12345678910
 herman@gmail.com
+
 987654321
 rizki@gmail.com
 
@@ -17,4 +17,6 @@ dian9395@gmail.com
 
 database: bike_sharing_universitasindo
 mysql -u  tk5_Iq3fmyKt -h mysql.storage.cloud.wso2.com -p 
+
+password: tk5basdat
 
